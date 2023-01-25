@@ -4,7 +4,6 @@ const http = require("http");
 const express = require('express');
 const { engine } = require("express-handlebars");
 const handlebars = require('handlebars');
-
 const app = express();
 
 /* création d'un serveur
@@ -28,60 +27,47 @@ app.set("views", "./views");
 
 //Routes
 app.get("/", (req, res) => {
-  res.render("home");
+  res.render("pages/home");
 });
 
 app.get("/contact", (req, res) => {
-  res.render("contact");
-});
-
-
-app.get("/navbar", (req, res) => {
-  res.render("navbar");
-});
-
-app.get("/footer", (req, res) => {
-  res.render("footer");
+  res.render("pages/contact");
 });
 
 app.get("/animes", (req, res) => {
-  res.render("animes");
+  res.render("pages/animes");
 });
 
 app.get("/cartes", (req, res) => {
-  res.render("cartes");
+  res.render("pages/cartes");
 });
 
 app.get("/connexion", (req, res) => {
-  res.render("connexion");
+  res.render("pages/connexion");
 });
 
-app.get("/creationcompte", (req, res) => {
-  res.render("creationcompte");
+app.get("/creation", (req, res) => {
+  res.render("pages/creation");
 });
 
 app.get("/id", (req, res) => {
-  res.render("id");
+  res.render("pages/id");
 });
 
 app.get("/jeuxvideos", (req, res) => {
-  res.render("jeuxvideos");
+  res.render("pages/jeuxvideos");
 });
 
 app.get("/mangas", (req, res) => {
-  res.render("mangas");
+  res.render("pages/mangas");
 });
 
 app.get("/mdpoublie", (req, res) => {
-  res.render("mdpoublie");
+  res.render("pages/mdpoublie");
 });
 
-app.get("/homecontent", (req, res) => {
-  res.render("homecontent")
-})
-
-app.get("/homecards", (req, res) => {
-  res.render("homecards")
+app.get("/profil", (req, res) => {
+  res.render("pages/profil")
 })
 
 // On demarre notre app en lui demandant d'être à l'écoute du port
