@@ -68,7 +68,16 @@ app.get("/mdpoublie", (req, res) => {
 
 app.get("/profil", (req, res) => {
   res.render("pages/profil")
-})
+}
+);
+
+app.get("/404", (req, res) => {
+  res.render("pages/page404")
+});
+
+app.get("/admin", (req, res) => {
+  res.render("pages/admin")
+});
 
 // On demarre notre app en lui demandant d'être à l'écoute du port
 app.listen(3000, () =>

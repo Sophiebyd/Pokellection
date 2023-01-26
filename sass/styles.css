@@ -6,8 +6,3 @@
   .img {
     @include image-size(50px, 50px);
   } *//*# sourceMappingURL=styles.css.map */
-
-  .img {
-    height: 50px;
-    width: 50px;
-  }
