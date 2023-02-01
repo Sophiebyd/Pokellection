@@ -4,17 +4,64 @@ const http = require("http");
 const express = require('express');
 const { engine } = require("express-handlebars");
 const handlebars = require('handlebars');
-const app = express();
+const mysql = require("mysql");
+const methodOverride = require('method-override');
+const bodyParser = require('body-parser');
+require('dotenv').config()
 
 /* création d'un serveur
 http
   .createServer(function (req, res) {
     res.end("http");
   })
-  .listen(3000, "127.0.0.1"); */
+  .listen(3000, "127.0.0.1"); 
 
 // log
-console.log("ça fonctionne !");
+console.log("ça fonctionne !"); */
+
+// Déstructuration des variables d'environement (process.env)
+const { DB_DATABASE, DB_HOST, DB_PASSWORD, DB_USER, PORT_NODE } = process.env;
+const app = express();
+
+/*
+* Config mysql
+***************/
+let configDB = {
+  host: DB_HOST, // localhost
+  user: DB_USER, // user
+  password: DB_PASSWORD, // password
+  database: DB_DATABASE // nameDatabase
+};
+
+// Création de la connection avec les paramètres donnés
+db = mysql.createConnection(configDB);
+
+// Connexion de la db mysql
+db.connect((err) => {
+  if (err) console.error('error connecting: ', err.stack);
+  console.log('connecchated as id ', db.threadId);
+});
+
+/*
+ * Config method override 
+ *************************/
+app.use(methodOverride('_method'));
+
+/*
+ * Config Body-parser
+ *********************/
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
+
+/*
+ * Configuration de la route vers notre dossier static
+ ******************************************************/
+app.use("/assets", express.static('public'));
+
 
 // configure handlebar
 app.engine("hbs", engine({
@@ -77,6 +124,10 @@ app.get("/404", (req, res) => {
 
 app.get("/admin", (req, res) => {
   res.render("pages/admin")
+})
+
+app.get("/allan", (req, res) => {
+  res.render("pages/allan")
 });
 
 // On demarre notre app en lui demandant d'être à l'écoute du port
