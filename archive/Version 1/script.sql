@@ -1,3 +1,6 @@
+CREATE DATABASE IF NOT EXISTS `poke`;
+USE `poke`;
+
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE users(
    Id_users INT AUTO_INCREMENT,

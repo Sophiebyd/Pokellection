@@ -35,6 +35,7 @@ let configDB = {
 
 // Création de la connection avec les paramètres donnés
 db = mysql.createConnection(configDB);
+db.query = require('util').promisify(db.query).bind(db)
 
 // Connexion de la db mysql
 db.connect((err) => {
@@ -131,6 +132,8 @@ app.get("/allan", (req, res) => {
 });
 
 // On demarre notre app en lui demandant d'être à l'écoute du port
-app.listen(3000, () =>
-  console.log(`on port 3000`)
+app.listen(PORT_NODE, () =>
+  console.log(`on port ${PORT_NODE}`)
 );
+
+module.exports = { db, app }
