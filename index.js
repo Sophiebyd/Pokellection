@@ -106,9 +106,72 @@ app.get("/jeuxvideos", (req, res) => {
   res.render("pages/jeuxvideos");
 });
 
-app.get("/mangas", (req, res) => {
-  res.render("pages/mangas");
-});
+app
+  .get("/mangas", (req, res) => {
+    
+    db.query(`SELECT * FROM articles`, (err, data) => {
+
+      let obj = {articles: data}
+    
+      if(process.env.MODE == "test") res.json(obj)
+      
+      else return res.render("pages/mangas",obj);
+    })
+
+  })
+  .post("/mangas", (req, res) => {
+    let sql = `
+        INSERT INTO articles 
+            (text, title, subtitle, picture, Id_users, Id_categories)
+        VALUES 
+            ( 'Mon super text', 'Title', 'Subtitle', '/assets/images/default.png', '1', '1' );
+    `;
+
+    db.query(sql, (err, data) => {
+        if (err) throw err;
+        
+        db.query(`SELECT * FROM articles`, (err, data) => {
+        let obj = {articles:data}
+    
+        if(process.env.MODE == "test") res.json(obj)
+        
+        else return res.render("pages/mangas",obj);
+      })
+
+    })
+
+    
+  });
+
+/***************** */
+// app
+//   .get("/mangas", async (req, res) => {
+    
+//     const articles = await db.query(`SELECT * FROM articles`)
+
+//     let obj = {articles}
+    
+//     if(process.env.MODE == "test") res.json(obj)
+    
+//     else return res.render("pages/mangas",obj);
+//   })
+//   .post("/mangas", async (req, res) => {
+//     let sql = `
+//         INSERT INTO articles 
+//             (text, title, subtitle, picture, Id_users, Id_categories)
+//         VALUES 
+//             ( 'Mon super text', 'Title', 'Subtitle', '/assets/images/default.png', '1', '1' );
+//     `;
+
+//     const data = await db.query(sql)
+//     const articles = await db.query(`SELECT * FROM articles`)
+
+//     let obj = {articles}
+    
+//     if(process.env.MODE == "test") res.json(obj)
+    
+//     else return res.render("pages/mangas",obj);
+//   });
 
 app.get("/mdpoublie", (req, res) => {
   res.render("pages/mdpoublie");

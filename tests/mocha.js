@@ -128,7 +128,7 @@ describe("MOCHA // CRUD // Articles", () => {
             INSERT INTO categories 
                 (name, picture)
             VALUES 
-                ( 'Test-${Date.now()}', '/assets/images/default.png'  );
+                ( 'Test-${Date.now()}', '/assets/images/default.png');
         `;
 
     db.query(sql, (err, data) => {
