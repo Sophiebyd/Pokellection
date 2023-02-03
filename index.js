@@ -113,7 +113,7 @@ app
 
       let obj = {articles: data}
     
-      if(process.env.MODE == "test") res.json(obj)
+      if(process.env.MODE === "test") res.json(obj)
       
       else return res.render("pages/mangas",obj);
     })
@@ -122,9 +122,9 @@ app
   .post("/mangas", (req, res) => {
     let sql = `
         INSERT INTO articles 
-            (text, title, subtitle, picture, Id_users, Id_categories)
+            (text, title, picture, Id_users, Id_categories)
         VALUES 
-            ( 'Mon super text', 'Title', 'Subtitle', '/assets/images/default.png', '1', '1' );
+            ( 'Mon super text', 'Title','/assets/images/default.png', '1', '1' );
     `;
 
     db.query(sql, (err, data) => {
@@ -133,7 +133,7 @@ app
         db.query(`SELECT * FROM articles`, (err, data) => {
         let obj = {articles:data}
     
-        if(process.env.MODE == "test") res.json(obj)
+        if(process.env.MODE === "test") res.json(obj)
         
         else return res.render("pages/mangas",obj);
       })
@@ -189,10 +189,6 @@ app.get("/404", (req, res) => {
 app.get("/admin", (req, res) => {
   res.render("pages/admin")
 })
-
-app.get("/allan", (req, res) => {
-  res.render("pages/allan")
-});
 
 // On demarre notre app en lui demandant d'être à l'écoute du port
 app.listen(PORT_NODE, () =>

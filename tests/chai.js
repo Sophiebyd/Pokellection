@@ -7,14 +7,16 @@ const chaiHttp = require("chai-http"),
 
 chai.use(chaiHttp);
 
-describe("CHAI // CONTROLLER // ARTICLE", () => {
+//////////////////////////////////////////////////
+
+describe("CHAI // CONTROLLER // Mangas", () => {
 
     // it(" ChaiRouter // GET // Articles", (done) => {
     //     console.log('Chai test')
     //     done()
     // })
 
-    it(" ChaiRouter // GET // Articles", (done) => {
+    it(" ChaiRouter // GET //  Mangas", (done) => {
         chai
             .request(app)
             .get("/mangas")
@@ -68,3 +70,5 @@ describe("CHAI // CONTROLLER // ARTICLE", () => {
     });
 
 })
+
+//////////////////////////////////////////////////////////////////////////
