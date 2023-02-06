@@ -81,7 +81,7 @@ VALUES   ('jeuxvidéo', 'https://cdn.idealo.com/folder/Product/201415/8/20141585
          ('animes', 'https://www.pokebip.com/images/2016/627.jpg'),
          ('cartes', 'https://images-na.ssl-images-amazon.com/images/I/A1aZWd780wL._AC_SL1500_.jpg');
 
-INSERT INTO articles (text, title, picture,Id_users, Id_categories )
+INSERT INTO articles (text, title, picture,Id_users, Id_categories)
 VALUES   ('lorem lorem lorem', 'Pokémon Arceus', 'https://www.pokebip.com/images/2016/627.jpg',4 ,3),
          ('lorem lorem lorem', 'Pokémon Ruby', 'https://www.pokebip.com/images/2016/627.jpg',2 ,1),
          ('lorem lorem lorem', 'Pokémon X', 'https://www.pokebip.com/images/2016/627.jpg',1 ,4),

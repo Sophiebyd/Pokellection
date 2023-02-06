@@ -1,13 +1,13 @@
 // http
 // import
 const http = require("http");
-const express = require('express');
+const express = require("express");
 const { engine } = require("express-handlebars");
-const handlebars = require('handlebars');
+const handlebars = require("handlebars");
 const mysql = require("mysql");
-const methodOverride = require('method-override');
-const bodyParser = require('body-parser');
-require('dotenv').config()
+const methodOverride = require("method-override");
+const bodyParser = require("body-parser");
+require("dotenv").config();
 
 /* création d'un serveur
 http
@@ -24,29 +24,29 @@ const { DB_DATABASE, DB_HOST, DB_PASSWORD, DB_USER, PORT_NODE } = process.env;
 const app = express();
 
 /*
-* Config mysql
-***************/
+ * Config mysql
+ ***************/
 let configDB = {
   host: DB_HOST, // localhost
   user: DB_USER, // user
   password: DB_PASSWORD, // password
-  database: DB_DATABASE // nameDatabase
+  database: DB_DATABASE, // nameDatabase
 };
 
 // Création de la connection avec les paramètres donnés
 db = mysql.createConnection(configDB);
-db.query = require('util').promisify(db.query).bind(db)
+db.query = require("util").promisify(db.query).bind(db);
 
 // Connexion de la db mysql
 db.connect((err) => {
-  if (err) console.error('error connecting: ', err.stack);
-  console.log('connecchated as id ', db.threadId);
+  if (err) console.error("error connecting: ", err.stack);
+  console.log("connecchated as id ", db.threadId);
 });
 
 /*
- * Config method override 
+ * Config method override
  *************************/
-app.use(methodOverride('_method'));
+app.use(methodOverride("_method"));
 
 /*
  * Config Body-parser
@@ -61,14 +61,15 @@ app.use(bodyParser.json());
 /*
  * Configuration de la route vers notre dossier static
  ******************************************************/
-app.use("/assets", express.static('public'));
-
+app.use("/assets", express.static("public"));
 
 // configure handlebar
-app.engine("hbs", engine({
-  extname: "hbs",
-  defaultLayout: "main",
-})
+app.engine(
+  "hbs",
+  engine({
+    extname: "hbs",
+    defaultLayout: "main",
+  })
 );
 app.set("view engine", "hbs");
 app.set("views", "./views");
@@ -108,16 +109,12 @@ app.get("/jeuxvideos", (req, res) => {
 
 app
   .get("/mangas", (req, res) => {
-    
     db.query(`SELECT * FROM articles`, (err, data) => {
+      let obj = { articles: data };
 
-      let obj = {articles: data}
-    
-      if(process.env.MODE === "test") res.json(obj)
-      
-      else return res.render("pages/mangas",obj);
-    })
-
+      if (process.env.MODE === "test") res.json(obj);
+      else return res.render("pages/mangas", obj);
+    });
   })
   .post("/mangas", (req, res) => {
     let sql = `
@@ -128,71 +125,61 @@ app
     `;
 
     db.query(sql, (err, data) => {
-        if (err) throw err;
-        
-        db.query(`SELECT * FROM articles`, (err, data) => {
-        let obj = {articles:data}
-    
-        if(process.env.MODE === "test") res.json(obj)
-        
-        else return res.render("pages/mangas",obj);
-      })
+      if (err) throw err;
 
-    })
+      db.query(`SELECT * FROM articles`, (err, data) => {
+        let obj = { articles: data };
 
-    
+        if (process.env.MODE === "test") res.json(obj);
+        else return res.render("pages/mangas", obj);
+      });
+    });
   });
 
 /***************** */
-// app
-//   .get("/mangas", async (req, res) => {
-    
-//     const articles = await db.query(`SELECT * FROM articles`)
+app
+  .get("/mangas", async (req, res) => {
+    const articles = await db.query(`SELECT * FROM articles`);
 
-//     let obj = {articles}
-    
-//     if(process.env.MODE == "test") res.json(obj)
-    
-//     else return res.render("pages/mangas",obj);
-//   })
-//   .post("/mangas", async (req, res) => {
-//     let sql = `
-//         INSERT INTO articles 
-//             (text, title, subtitle, picture, Id_users, Id_categories)
-//         VALUES 
-//             ( 'Mon super text', 'Title', 'Subtitle', '/assets/images/default.png', '1', '1' );
-//     `;
+    let obj = { articles };
 
-//     const data = await db.query(sql)
-//     const articles = await db.query(`SELECT * FROM articles`)
+    if (process.env.MODE == "test") res.json(obj);
+    else return res.render("pages/mangas", obj);
+  })
+  .post("/mangas", async (req, res) => {
+    let sql = `
+         INSERT INTO articles 
+             (text, title, subtitle, picture, Id_users, Id_categories)
+         VALUES 
+             ( 'Mon super text', 'Title', 'Subtitle', '/assets/images/default.png', '1', '1' );
+     `;
 
-//     let obj = {articles}
-    
-//     if(process.env.MODE == "test") res.json(obj)
-    
-//     else return res.render("pages/mangas",obj);
-//   });
+    const data = await db.query(sql);
+    const articles = await db.query(`SELECT * FROM articles`);
+
+    let obj = { articles };
+
+    if (process.env.MODE == "test") res.json(obj);
+    else return res.render("pages/mangas", obj);
+  });
 
 app.get("/mdpoublie", (req, res) => {
   res.render("pages/mdpoublie");
 });
 
 app.get("/profil", (req, res) => {
-  res.render("pages/profil")
-}
-);
+  res.render("pages/profil");
+});
 
 app.get("/404", (req, res) => {
-  res.render("pages/page404")
+  res.render("pages/page404");
 });
 
 app.get("/admin", (req, res) => {
-  res.render("pages/admin")
-})
+  res.render("pages/admin");
+});
 
 // On demarre notre app en lui demandant d'être à l'écoute du port
-app.listen(PORT_NODE, () =>
-  console.log(`on port ${PORT_NODE}`)
-);
+app.listen(PORT_NODE, () => console.log(`on port ${PORT_NODE}`));
 
-module.exports = { db, app }
+module.exports = { db, app };
