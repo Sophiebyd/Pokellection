@@ -74,110 +74,146 @@ app.engine(
 app.set("view engine", "hbs");
 app.set("views", "./views");
 
-//Routes
+//////////////////////////////////// Routes //////////////////////////////////////////////////////////////////
+
+// Home page
 app.get("/", (req, res) => {
-  res.render("pages/home");
+  // Récupération de tout les articles
+  db.query(`SELECT * FROM categories`, (err, data) => {
+    //if (process.env.MODE === "test") res.json(obj);
+    if (err) throw err;
+    console.log("data", data);
+    return res.render("pages/home", { data });
+  });
 });
 
-app.get("/contact", (req, res) => {
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+app.get("/contact", async (req, res) => {
   res.render("pages/contact");
 });
 
-app.get("/animes", (req, res) => {
-  res.render("pages/animes");
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+app.get("/animes", async (req, res) => {
+  try {
+    // Récupération de tout les articles
+    const data1 = await new Promise((resolve, reject) => {
+      db.query(`SELECT * FROM articles WHERE titleseries IS NOT NULL`, (err, data) => {
+        if (err) return reject(err);
+        resolve(data)
+        console.log(JSON.stringify(data))
+      });
+    });
+    const data2 = await new Promise((resolve, reject) => {
+      db.query(`SELECT * FROM articles WHERE titlefilms IS NOT NULL`, (err, data) => {
+        if (err) return reject(err);
+        resolve(data)
+        console.log(JSON.stringify(data))
+      });
+    });
+    const data = [...data1, ...data2];
+    return res.render("pages/animes", { data });
+  } catch (err) {
+    console.error(err);
+    return res.sendStatus(500);
+  }
 });
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 app.get("/cartes", (req, res) => {
   res.render("pages/cartes");
 });
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 app.get("/connexion", (req, res) => {
   res.render("pages/connexion");
 });
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 app.get("/creation", (req, res) => {
   res.render("pages/creation");
 });
 
-app.get("/id", (req, res) => {
-  res.render("pages/id");
-});
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+app
+  .get("/id", (req, res) => {
+    db.query(`SELECT * FROM comments where id_articles = 1`, (err, data) => {
+      if (err) throw err;
+      console.log(data);
+      res.render("pages/id", { data });
+    });
+  })
+  .post("/id", (req, res) => {
+    const { text } = req.body;
+    db.query(
+      `INSERT INTO comments (text, reported, Id_users, Id_articles) VALUES ('${text}', 0, 1,1);`,
+      function (err, data) {
+        if (err) throw err;
+        console.log(data);
+        res.render("pages/id");
+      }
+    );
+  });
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 app.get("/jeuxvideos", (req, res) => {
-  res.render("pages/jeuxvideos");
+  // Récupération de tout les articles
+  db.query(
+    `SELECT titlejeux, datesorties, version FROM articles WHERE titlejeux IS NOT NULL`,
+    (err, data) => {
+      //if (process.env.MODE === "test") res.json(obj);
+      if (err) throw err;
+      console.log("data", data);
+      return res.render("pages/jeuxvideos", { data });
+    }
+  );
 });
 
-app
-  .get("/mangas", (req, res) => {
-    db.query(`SELECT * FROM articles`, (err, data) => {
-      let obj = { articles: data };
-
-      if (process.env.MODE === "test") res.json(obj);
-      else return res.render("pages/mangas", obj);
-    });
-  })
-  .post("/mangas", (req, res) => {
-    let sql = `
-        INSERT INTO articles 
-            (text, title, picture, Id_users, Id_categories)
-        VALUES 
-            ( 'Mon super text', 'Title','/assets/images/default.png', '1', '1' );
-    `;
-
-    db.query(sql, (err, data) => {
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+app.get("/mangas", (req, res) => {
+  // Récupération de tout les articles
+  db.query(
+    `SELECT titlemangas, parution, nb FROM articles WHERE titlemangas IS NOT NULL`,
+    (err, data) => {
+      //if (process.env.MODE === "test") res.json(obj);
       if (err) throw err;
+      console.log("data", data);
+      return res.render("pages/mangas", { data });
+    }
+  );
+});
 
-      db.query(`SELECT * FROM articles`, (err, data) => {
-        let obj = { articles: data };
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        if (process.env.MODE === "test") res.json(obj);
-        else return res.render("pages/mangas", obj);
-      });
-    });
-  });
-
-/***************** */
-app
-  .get("/mangas", async (req, res) => {
-    const articles = await db.query(`SELECT * FROM articles`);
-
-    let obj = { articles };
-
-    if (process.env.MODE == "test") res.json(obj);
-    else return res.render("pages/mangas", obj);
-  })
-  .post("/mangas", async (req, res) => {
-    let sql = `
-         INSERT INTO articles 
-             (text, title, subtitle, picture, Id_users, Id_categories)
-         VALUES 
-             ( 'Mon super text', 'Title', 'Subtitle', '/assets/images/default.png', '1', '1' );
-     `;
-
-    const data = await db.query(sql);
-    const articles = await db.query(`SELECT * FROM articles`);
-
-    let obj = { articles };
-
-    if (process.env.MODE == "test") res.json(obj);
-    else return res.render("pages/mangas", obj);
-  });
-
-app.get("/mdpoublie", (req, res) => {
+app.get("/mdpoublie", async (req, res) => {
   res.render("pages/mdpoublie");
 });
 
-app.get("/profil", (req, res) => {
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+app.get("/profil", async (req, res) => {
   res.render("pages/profil");
 });
 
-app.get("/404", (req, res) => {
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+app.get("/404", async (req, res) => {
   res.render("pages/page404");
 });
 
-app.get("/admin", (req, res) => {
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+app.get("/admin", async (req, res) => {
   res.render("pages/admin");
 });
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // On demarre notre app en lui demandant d'être à l'écoute du port
 app.listen(PORT_NODE, () => console.log(`on port ${PORT_NODE}`));

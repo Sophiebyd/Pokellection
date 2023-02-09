@@ -67,3 +67,28 @@
         </div>
     </div>
 </div>
+
+{{! Section Commentaire }}
+<form action="" method="post" class="container-fluid bg-light">
+    <div class="d-flex flex-column">
+        <label for="textareaComment">Poster un commentaire</label>
+        <textarea name="text" id="textareaComment" rows="3"></textarea>
+    </div>
+    <div class="d-flex justify-content-end my-2">
+        <button class="btn btn-warning" type="submit">Post</button>
+    </div>
+</form>
+<div class="container-fluid p-3">
+    <table class="table bg-light">
+        <thead>
+            <tr>
+                <th scope="col">Commentaires</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+            {{> global/comment data=this}}
+            {{/each}}
+        </tbody>
+    </table>
+</div>

@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node .",
-    "dev": "nodemon .",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "mocha": "MODE=test nodemon --exec 'mocha ./tests/mocha.js'",
     "chai": "MODE=test nodemon --exec 'mocha ./tests/chai.js'"
   },

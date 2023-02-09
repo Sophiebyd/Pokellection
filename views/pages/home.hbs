@@ -12,48 +12,55 @@
 <div class="container">
     <h2 class="display-6 text-center ">Catégories</h2>
     <div class="row justify-content-center justify-content-around py-5">
+{{#each data}}
+{{>home/card data=this}} 
+{{/each}}
 
-        <!-- first card -->
+
+
+
+<!--         first card 
         <div class="col-md-3 col-sm-5 col-lg-2">
             <div class="card">
                 <img src="https://cdn.idealo.com/folder/Product/201415/8/201415852/s4_produktbild_max/legendes-pokemon-arceus-switch.jpg"
                     alt="pochettejeu" class="w-100" style="height: 261px; width:162px">
             </div>
             <div class="card-body my-2 text-center">
-                <a href="/jeuxvideos" class="card-link text-decoration-none">Jeux vidéos</a>
+                <a href="/jeuxvideos" class="card-link text-decoration-none"></a>
             </div>
         </div>
 
-        <!-- second card -->
+         second card 
         <div class="col-md-3 col-sm-5 col-lg-2">
             <div class="card">
                 <img src="https://www.rightstufanime.com/images/productImages/9781421596266_manga-pokemon-omega-ruby-alpha-sapphire-volume-5-primary.jpg"
                     alt="pochettemanga" class="w-100" style="height: 261px; width:162">
             </div>
             <div class="card-body my-2 text-center">
-                <a href="/mangas" class="card-link text-decoration-none">Mangas</a>
+                <a href="/mangas" class="card-link text-decoration-none"></a>
             </div>
         </div>
 
-        <!-- third card -->
+         third card 
         <div class="col-md-3 col-sm-5 col-lg-2">
             <div class="card">
-                <img src="https://www.pokebip.com/images/2016/627.jpg" alt="pochetteanime" class="w-100" style="height: 261px; width:162">
+                <img src="https://www.pokebip.com/images/2016/627.jpg" alt="pochetteanime" class="w-100"
+                    style="height: 261px; width:162">
             </div>
             <div class="card-body my-2 text-center">
-                <a href="/mangas" class="card-link text-decoration-none">Animes</a>
+                <a href="/mangas" class="card-link text-decoration-none"></a>
             </div>
         </div>
 
-        <!-- fourth card-->
+         fourth card
         <div class="col-md-3 col-sm-5 col-lg-2">
             <div class="card">
                 <img src="https://images-na.ssl-images-amazon.com/images/I/A1aZWd780wL._AC_SL1500_.jpg"
                     alt="pochettecarte" class="w-100" style="height: 261px; width:162">
             </div>
             <div class="card-body my-2 text-center">
-                <a href="/cartes" class="card-link text-decoration-none">Cartes</a>
+                <a href="/cartes" class="card-link text-decoration-none"></a>
             </div>
-        </div>
-    </div>
+        </div>-->
+    </div> 
 </div>
