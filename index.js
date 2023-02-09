@@ -77,48 +77,44 @@ app.set("views", "./views");
 //////////////////////////////////// Routes //////////////////////////////////////////////////////////////////
 
 // Home page
-app.get("/", (req, res) => {
+app
+  .get("/", (req, res) => {
   // Récupération de tout les articles
   db.query(`SELECT * FROM categories`, (err, data) => {
     //if (process.env.MODE === "test") res.json(obj);
     if (err) throw err;
     console.log("data", data);
     return res.render("pages/home", { data });
-  });
-});
+  })
+})
+// 1/ à faire en premier :: POST ARTICLE - CREATE
+  .post('/', (req, res) => {
+  // Récupération des données du formulaire
+  const { name, picture } = req.body;
+  // Ajout d'un article
+  db.query(`INSERT INTO categories (name, picture) VALUES ('${name}', '${picture}');`, function(err, data){
+    if(err) throw err;
+    // Redirection vers la page Admin
+    res.redirect('/admin');
+  })
+})
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-app.get("/contact", async (req, res) => {
+// Contact
+app.get("/contact", (req, res) => {
   res.render("pages/contact");
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-app.get("/animes", async (req, res) => {
-  try {
-    // Récupération de tout les articles
-    const data1 = await new Promise((resolve, reject) => {
-      db.query(`SELECT * FROM articles WHERE titleseries IS NOT NULL`, (err, data) => {
-        if (err) return reject(err);
-        resolve(data)
-        console.log(JSON.stringify(data))
-      });
-    });
-    const data2 = await new Promise((resolve, reject) => {
-      db.query(`SELECT * FROM articles WHERE titlefilms IS NOT NULL`, (err, data) => {
-        if (err) return reject(err);
-        resolve(data)
-        console.log(JSON.stringify(data))
-      });
-    });
-    const data = [...data1, ...data2];
-    return res.render("pages/animes", { data });
-  } catch (err) {
-    console.error(err);
-    return res.sendStatus(500);
-  }
+app.route("/animes")
+.get(async (req, res) => {
+const films = await db.query("SELECT * FROM articles WHERE titlefilms IS NOT NULL");
+const series = await db.query("SELECT * FROM articles WHERE titleseries IS NOT NULL");
+res.render("pages/animes", { films, series });
 });
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -162,32 +158,58 @@ app
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-app.get("/jeuxvideos", (req, res) => {
+app
+  .get("/jeuxvideos", (req, res) => {
   // Récupération de tout les articles
   db.query(
-    `SELECT titlejeux, datesorties, version FROM articles WHERE titlejeux IS NOT NULL`,
+    `SELECT * FROM articles WHERE titlejeux IS NOT NULL`,
     (err, data) => {
       //if (process.env.MODE === "test") res.json(obj);
       if (err) throw err;
       console.log("data", data);
       return res.render("pages/jeuxvideos", { data });
     }
-  );
+  )
+})
+// 1/ à faire en premier :: POST ARTICLE - CREATE
+  .post('/jeuxvideos', (req, res) => {
+    // Récupération des données du formulaire
+    const { titlejeux, datesorties, version} = req.body;
+    console.log(req.body);
+  // Ajout d'un article
+  db.query(`INSERT INTO articles (titlejeux, datesorties, version) VALUES ('${titlejeux}', '${datesorties}', '${version}');`, function(err, data){
+    if(err) throw err;
+    // Redirection vers la page Admin
+    res.redirect('/jeuxvideos');
+  })
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-app.get("/mangas", (req, res) => {
+
+app
+  .get("/mangas", (req, res) => {
   // Récupération de tout les articles
   db.query(
-    `SELECT titlemangas, parution, nb FROM articles WHERE titlemangas IS NOT NULL`,
+    `SELECT * FROM articles WHERE titlemangas IS NOT NULL`,
     (err, data) => {
       //if (process.env.MODE === "test") res.json(obj);
       if (err) throw err;
       console.log("data", data);
-      return res.render("pages/mangas", { data });
+      return res.render("pages/mangas", { data })
     }
-  );
-});
+  )
+})
+// 1/ à faire en premier :: POST ARTICLE - CREATE
+  .post('/mangas', (req, res) => {
+  // Récupération des données du formulaire
+  const { titlemangas, parution, nb} = req.body;
+  // Ajout d'un article
+  db.query(`INSERT INTO articles (titlemangas, parution, nb) VALUES ('${titlemangas}', '${parution}', '${nb}');`, function(err, data){
+    if(err) throw err;
+    // Redirection vers la page Admin
+    res.redirect('/admin');
+  })
+})
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
