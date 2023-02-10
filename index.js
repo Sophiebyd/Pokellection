@@ -87,17 +87,6 @@ app
     return res.render("pages/home", { data });
   })
 })
-// 1/ à faire en premier :: POST ARTICLE - CREATE
-  .post('/', (req, res) => {
-  // Récupération des données du formulaire
-  const { name, picture } = req.body;
-  // Ajout d'un article
-  db.query(`INSERT INTO categories (name, picture) VALUES ('${name}', '${picture}');`, function(err, data){
-    if(err) throw err;
-    // Redirection vers la page Admin
-    res.redirect('/admin');
-  })
-})
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -112,14 +101,21 @@ app.route("/animes")
 .get(async (req, res) => {
 const films = await db.query("SELECT * FROM articles WHERE titlefilms IS NOT NULL");
 const series = await db.query("SELECT * FROM articles WHERE titleseries IS NOT NULL");
-res.render("pages/animes", { films, series });
+//if (process.env.MODE === "test") res.json({ films, series });
+//else
+ res.render("pages/animes", { films, series });
 });
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-app.get("/cartes", (req, res) => {
-  res.render("pages/cartes");
+app.route("/cartes")
+.get(async (req, res) => {
+const boosters = await db.query("SELECT * FROM articles WHERE titlebooster IS NOT NULL");
+const decks = await db.query("SELECT * FROM articles WHERE titledeck IS NOT NULL");
+//if (process.env.MODE === "test") res.json({ boosters, decks });
+//else 
+res.render("pages/cartes", { boosters, decks });
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -171,18 +167,6 @@ app
     }
   )
 })
-// 1/ à faire en premier :: POST ARTICLE - CREATE
-  .post('/jeuxvideos', (req, res) => {
-    // Récupération des données du formulaire
-    const { titlejeux, datesorties, version} = req.body;
-    console.log(req.body);
-  // Ajout d'un article
-  db.query(`INSERT INTO articles (titlejeux, datesorties, version) VALUES ('${titlejeux}', '${datesorties}', '${version}');`, function(err, data){
-    if(err) throw err;
-    // Redirection vers la page Admin
-    res.redirect('/jeuxvideos');
-  })
-});
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -199,17 +183,6 @@ app
     }
   )
 })
-// 1/ à faire en premier :: POST ARTICLE - CREATE
-  .post('/mangas', (req, res) => {
-  // Récupération des données du formulaire
-  const { titlemangas, parution, nb} = req.body;
-  // Ajout d'un article
-  db.query(`INSERT INTO articles (titlemangas, parution, nb) VALUES ('${titlemangas}', '${parution}', '${nb}');`, function(err, data){
-    if(err) throw err;
-    // Redirection vers la page Admin
-    res.redirect('/admin');
-  })
-})
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -218,7 +191,7 @@ app.get("/mdpoublie", async (req, res) => {
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+// post // put // delete
 app.get("/profil", async (req, res) => {
   res.render("pages/profil");
 });

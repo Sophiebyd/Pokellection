@@ -180,4 +180,13 @@ VALUES   ('lorem lorem lorem', 'Tempête Argentée', 'Epée/Bouclier','https://e
          ('lorem lorem lorem', 'Ténèbres Embrasées', 'Epée/Bouclier','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-z3xrCjKkMe7WtOY7gwwnnWUpKprdBs7JrvJ1AZCkcQx0SwA7R67ccTG5GlLZfEiiJm4&usqp=CAU',1,4),	
          ('lorem lorem lorem', 'Clash des Rebelles', 'Epée/Bouclier','https://m.media-amazon.com/images/I/71F1G2nlXfL._AC_SL1429_.jpg',1,4),	
          ('lorem lorem lorem', 'Epée et Bouclier', 'Epée/Bouclier','https://m.media-amazon.com/images/I/71F1G2nlXfL._AC_SL1429_.jpg',1,4);	
-         
+
+INSERT INTO articles (text, titledeck, collection, picture, Id_users, Id_categories)
+VALUES   ('lorem lorem lorem', 'Tempête Argentée', 'Epée/Bouclier','https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcThsftLoA4ZVvyhj5ZEC-3x2EDrP0u8fgvOW3WnYc5SOuRJuE3c',1,4),	
+         ('lorem lorem lorem', 'Origine Perdue', 'Epée/Bouclier','https://nintendalerts.com/wp-content/uploads/2022/06/Cartes-Pokemon-Booster-EB11-Origine-Perdue-3.jpg',1,4),	
+         ('lorem lorem lorem', 'Astres Radieux', 'Epée/Bouclier','https://m.media-amazon.com/images/I/71ftnns0PgL._AC_SY550_.jpg',1,4),	
+         ('lorem lorem lorem', 'Règne de Glace', 'Epée/Bouclier','https://m.media-amazon.com/images/I/71NzjGm+d4L._AC_SL1429_.jpg',1,4),	
+         ('lorem lorem lorem', 'Voltage Eclatant', 'Epée/Bouclier','https://tcg.pokemon.com/assets/img/expansions/vivid-voltage/collections/fr-fr/bdb-detail-5.png',1,4),	
+         ('lorem lorem lorem', 'Ténèbres Embrasées', 'Epée/Bouclier','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-z3xrCjKkMe7WtOY7gwwnnWUpKprdBs7JrvJ1AZCkcQx0SwA7R67ccTG5GlLZfEiiJm4&usqp=CAU',1,4),	
+         ('lorem lorem lorem', 'Clash des Rebelles', 'Epée/Bouclier','https://m.media-amazon.com/images/I/71F1G2nlXfL._AC_SL1429_.jpg',1,4),	
+         ('lorem lorem lorem', 'Epée et Bouclier', 'Epée/Bouclier','https://m.media-amazon.com/images/I/71F1G2nlXfL._AC_SL1429_.jpg',1,4);	
