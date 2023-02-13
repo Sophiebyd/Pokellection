@@ -3,125 +3,163 @@
     <button class="btn btn-outline-primary " type="submit">Rechercher</button>
 </form>
 
-<!-- premier tableau -->
-<div class="table-responsive-sm container mt-2">
-    <h1 class="text-center display-5 mt-3">Liste Users</h1>
+
+<div class="container table-responsive-sm mt-2 col-10">
+    <h1 class="text-center display-5 mt-3">Liste users</h1>
     <table class="table table-hover table-striped">
         <thead class="table-primary">
             <tr>
                 <th class="col text-secondary">Nom</th>
-                <th class="col text-secondary">Prénom</th>
-                <th class="col text-secondary">Pseudo</th>
-                <th class="col text-secondary">Email</th>
-                <th class="col text-secondary">Mot de passe</th>
-                <th class="col text-secondary">Date de naissance</th>
-                <th class="col text-secondary">Action</th>
+                <th class="col text-secondary text-center">prénom</th>
+                <th class="col text-secondary text-center">Date crée</th>
+                <th class="col text-secondary text-center">Edité le</th>
+                <th class="col-1 text-secondary text-center">Action</th>
             </tr>
+            <tbody>
+            {{#each user}}
+            {{>admin/tablesusers data=this}}
+            {{/each}}
+            </tbody>
         </thead>
-        <tbody>
-            <tr>
-                <th>Byd</th>
-                <th>Sophie</th>
-                <th>Steins</th>
-                <th>sophiebyby@gmail.com</th>
-                <th>***********</th>
-                <th>02-08-1995</th>
-                <th><a role="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-square"></i></a>
-                    <a role="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-pencil-square"></i></a>
-                    <a role="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-trash3"></i></a>
-                </th>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<div class="modal" tabindex="-1" id="exampleModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- deuxième tableau -->
-<div class="table-responsive-sm container mt-2">
-    <h1 class="text-center display-5 mt-3">Liste Catégories</h1>
-    <table class="table table-hover table-striped">
-        <thead class="table-primary">
-            <tr>
-                <th class="col text-secondary">Nom</th>
-                <th class="col text-secondary">Image</th>
-                <th class="col text-secondary">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th>Jeux vidéo</th>
-                <th><img src="https://cdn.idealo.com/folder/Product/201415/8/201415852/s4_produktbild_max/legendes-pokemon-arceus-switch.jpg"
-                        alt="pochettejeu" class="w-100" style="height: 50px; width:70px"></th>
-                <th><a href="#"><i class="bi bi-plus-square"></i></a>
-                    <a href="#"><i class="bi bi-pencil-square"></i></a>
-                    <a href="#"><i class="bi bi-trash3"></i></a>
-                </th>
-            </tr>
-            <tr>
-                <th>Mangas</th>
-                <th><img src="https://cdn.idealo.com/folder/Product/201415/8/201415852/s4_produktbild_max/legendes-pokemon-arceus-switch.jpg"
-                        alt="pochettejeu" class="w-100" style="height: 50px; width:70px"></th>
-                <th><a href="#"><i class="bi bi-plus-square"></i></a>
-                    <a href="#"><i class="bi bi-pencil-square"></i></a>
-                    <a href="#"><i class="bi bi-trash3"></i></a>
-                </th>
-            </tr>
-            <tr>
-                <th>Animes</th>
-                <th><img src="https://cdn.idealo.com/folder/Product/201415/8/201415852/s4_produktbild_max/legendes-pokemon-arceus-switch.jpg"
-                        alt="pochettejeu" class="w-100" style="height: 50px; width:70px"></th>
-                <th><a href="#"><i class="bi bi-plus-square"></i></a>
-                    <a href="#"><i class="bi bi-pencil-square"></i></a>
-                    <a href="#"><i class="bi bi-trash3"></i></a>
-                </th>
-            </tr>
-            <tr>
-                <th>Cartes</th>
-                <th><img src="https://cdn.idealo.com/folder/Product/201415/8/201415852/s4_produktbild_max/legendes-pokemon-arceus-switch.jpg"
-                        alt="pochettejeu" class="w-100" style="height: 50px; width:70px"></th>
-                <th><a href="#"><i class="bi bi-plus-square"></i></a>
-                    <a href="#"><i class="bi bi-pencil-square"></i></a>
-                    <a href="#"><i class="bi bi-trash3"></i></a>
-                </th>
-            </tr>
-        </tbody>
     </table>
 </div>
 
-<!-- troisième tableau -->
-<div class="table-responsive-sm container mt-2">
-    <h1 class="text-center display-5 mt-3">Liste Articles</h1>
+<div class="container table-responsive-sm mt-2 col-7">
+    <h1 class="text-center display-5 mt-3">Liste Catégorie</h1>
     <table class="table table-hover table-striped">
         <thead class="table-primary">
             <tr>
-                <th class="col text-secondary">Title</th>
-                <th class="col text-secondary">Action</th>
+                <th class="col text-secondary">Titre</th>
+                <th class="col text-secondary text-center">Date crée</th>
+                <th class="col text-secondary text-center">Edité le</th>
+                <th class="col-1 text-secondary text-center">Action</th>
             </tr>
+            <tbody>
+            {{#each categorie}}
+            {{>admin/tablescategories data=this}}
+            {{/each}}
+            </tbody>
         </thead>
-        <tbody>
-            <tr>
-                <th>Arceus</th>
-                <th><a href="#"><i class="bi bi-plus-square"></i></a>
-                    <a href="#"><i class="bi bi-pencil-square"></i></a>
-                    <a href="#"><i class="bi bi-trash3"></i></a>
-                </th>
-            </tr>
-        </tbody>
     </table>
 </div>
+
+<div class="container table-responsive-sm mt-2 col-7">
+    <h1 class="text-center display-5 mt-3">Liste Jeux vidéos</h1>
+    <table class="table table-hover table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th class="col text-secondary">Titre</th>
+                <th class="col text-secondary text-center">Date crée</th>
+                <th class="col text-secondary text-center">Edité le</th>
+                <th class="col-1 text-secondary text-center">Action</th>
+            </tr>
+            <tbody>
+            {{#each jeux}}
+            {{>admin/tablesjeux data=this}}
+            {{/each}}
+            </tbody>
+        </thead>
+    </table>
+</div>
+
+
+<div class="container table-responsive-sm mt-2 col-7">
+    <h1 class="text-center display-5 mt-3">Liste Mangas</h1>
+    <table class="table table-hover table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th class="col text-secondary">Titre</th>
+                <th class="col text-secondary text-center">Date crée</th>
+                <th class="col text-secondary text-center">Edité le</th>
+                <th class="col-1 text-secondary text-center">Action</th>
+            </tr>
+            <tbody>
+            {{#each manga}}
+            {{>admin/tablesmangas data=this}}
+            {{/each}}
+            </tbody>
+        </thead>
+    </table>
+</div>
+
+
+<div class="container table-responsive-sm mt-2 col-7">
+    <h1 class="text-center display-5 mt-3">Liste Séries</h1>
+    <table class="table table-hover table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th class="col text-secondary">Titre</th>
+                <th class="col text-secondary text-center">Date crée</th>
+                <th class="col text-secondary text-center">Edité le</th>
+                <th class="col-1 text-secondary text-center">Action</th>
+            </tr>
+            <tbody>
+            {{#each serie}}
+            {{>admin/tablesseries data=this}}
+            {{/each}}
+            </tbody>
+        </thead>
+    </table>
+</div>
+
+
+<div class="container table-responsive-sm mt-2 col-7">
+    <h1 class="text-center display-5 mt-3">Liste films</h1>
+    <table class="table table-hover table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th class="col text-secondary">Titre</th>
+                <th class="col text-secondary text-center">Date crée</th>
+                <th class="col text-secondary text-center">Edité le</th>
+                <th class="col-1 text-secondary text-center">Action</th>
+            </tr>
+            <tbody>
+            {{#each film}}
+            {{>admin/tablesfilms data=this}}
+            {{/each}}
+            </tbody>
+        </thead>
+    </table>
+</div>
+
+
+<div class="container table-responsive-sm mt-2 col-7">
+    <h1 class="text-center display-5 mt-3">Liste boosters</h1>
+    <table class="table table-hover table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th class="col text-secondary">Titre</th>
+                <th class="col text-secondary text-center">Date crée</th>
+                <th class="col text-secondary text-center">Edité le</th>
+                <th class="col-1 text-secondary text-center">Action</th>
+            </tr>
+            <tbody>
+            {{#each booster}}
+            {{>admin/tablesboosters data=this}}
+            {{/each}}
+            </tbody>
+        </thead>
+    </table>
+</div>
+
+
+<div class="container table-responsive-sm mt-2 col-7">
+    <h1 class="text-center display-5 mt-3">Liste decks</h1>
+    <table class="table table-hover table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th class="col text-secondary">Titre</th>
+                <th class="col text-secondary text-center">Date crée</th>
+                <th class="col text-secondary text-center">Edité le</th>
+                <th class="col-1 text-secondary text-center">Action</th>
+            </tr>
+            <tbody>
+            {{#each deck}}
+            {{>admin/tablesdecks data=this}}
+            {{/each}}
+            </tbody>
+        </thead>
+    </table>
+</div>
+
+

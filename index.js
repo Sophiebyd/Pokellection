@@ -97,25 +97,29 @@ app.get("/contact", (req, res) => {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-app.route("/animes")
-.get(async (req, res) => {
-const films = await db.query("SELECT * FROM articles WHERE titlefilms IS NOT NULL");
-const series = await db.query("SELECT * FROM articles WHERE titleseries IS NOT NULL");
-//if (process.env.MODE === "test") res.json({ films, series });
-//else
- res.render("pages/animes", { films, series });
-});
-
+app
+  .get("/jeuxvideos", (req, res) => {
+  // Récupération de tout les articles
+  db.query(
+    `SELECT * FROM articles WHERE titlejeux IS NOT NULL`,
+    (err, data) => {
+      //if (process.env.MODE === "test") res.json(obj);
+      if (err) throw err;
+      console.log("data", data);
+      return res.render("pages/jeuxvideos", { data })
+    }
+  )
+})
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 app.route("/cartes")
-.get(async (req, res) => {
-const boosters = await db.query("SELECT * FROM articles WHERE titlebooster IS NOT NULL");
-const decks = await db.query("SELECT * FROM articles WHERE titledeck IS NOT NULL");
-//if (process.env.MODE === "test") res.json({ boosters, decks });
-//else 
-res.render("pages/cartes", { boosters, decks });
+  .get(async (req, res) => {
+    const boosters = await db.query("SELECT * FROM articles WHERE titlebooster IS NOT NULL");
+    const decks = await db.query("SELECT * FROM articles WHERE titledeck IS NOT NULL");
+      //if (process.env.MODE === "test") res.json({ boosters, decks });
+      //else 
+        res.render("pages/cartes", { boosters, decks });
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -132,30 +136,34 @@ app.get("/creation", (req, res) => {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-app
-  .get("/id", (req, res) => {
-    db.query(`SELECT * FROM comments where id_articles = 1`, (err, data) => {
-      if (err) throw err;
-      console.log(data);
-      res.render("pages/id", { data });
-    });
-  })
-  .post("/id", (req, res) => {
-    const { text } = req.body;
-    db.query(
-      `INSERT INTO comments (text, reported, Id_users, Id_articles) VALUES ('${text}', 0, 1,1);`,
-      function (err, data) {
-        if (err) throw err;
-        console.log(data);
-        res.render("pages/id");
-      }
-    );
-  });
+app.route("/animes")
+.get(async (req, res) => {
+  const films = await db.query("SELECT * FROM articles WHERE titlefilms IS NOT NULL");
+  const series = await db.query("SELECT * FROM articles WHERE titleseries IS NOT NULL");
+    //if (process.env.MODE === "test") res.json({ films, series });
+    //else
+      res.render("pages/animes", { films, series });
+});
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 app
-  .get("/jeuxvideos", (req, res) => {
+  .get("/series/:id", (req, res) => {
+  // Récupération de tout les articles
+  db.query(
+    `SELECT text, titleseries, picture,  FROM articles WHERE titleseries IS NOT NULL`,
+    (err, data) => {
+      //if (process.env.MODE === "test") res.json(obj);
+      if (err) throw err;
+      console.log("data", data);
+      return res.render("pages/id_series", { data })
+    }
+  )
+})
+
+app
+  .get("/films/:id", (req, res) => {
   // Récupération de tout les articles
   db.query(
     `SELECT * FROM articles WHERE titlejeux IS NOT NULL`,
@@ -163,7 +171,63 @@ app
       //if (process.env.MODE === "test") res.json(obj);
       if (err) throw err;
       console.log("data", data);
-      return res.render("pages/jeuxvideos", { data });
+      return res.render("pages/id_films", { data })
+    }
+  )
+})
+
+app
+  .get("/mangas/:id", (req, res) => {
+  // Récupération de tout les articles
+  db.query(
+    `SELECT * FROM articles WHERE titlejeux IS NOT NULL`,
+    (err, data) => {
+      //if (process.env.MODE === "test") res.json(obj);
+      if (err) throw err;
+      console.log("data", data);
+      return res.render("pages/id_mangas", { data })
+    }
+  )
+})
+
+app
+  .get("/boosters/:id", (req, res) => {
+  // Récupération de tout les articles
+  db.query(
+    `SELECT * FROM articles WHERE titlejeux IS NOT NULL`,
+    (err, data) => {
+      //if (process.env.MODE === "test") res.json(obj);
+      if (err) throw err;
+      console.log("data", data);
+      return res.render("pages/id_boosters", { data })
+    }
+  )
+})
+
+app
+  .get("/decks/:id", (req, res) => {
+  // Récupération de tout les articles
+  db.query(
+    `SELECT * FROM articles WHERE titlejeux IS NOT NULL`,
+    (err, data) => {
+      //if (process.env.MODE === "test") res.json(obj);
+      if (err) throw err;
+      console.log("data", data);
+      return res.render("pages/id_decks", { data })
+    }
+  )
+})
+
+app
+  .get("/jeux/:id", (req, res) => {
+  // Récupération de tout les articles
+  db.query(
+    `SELECT * FROM articles WHERE titlejeux IS NOT NULL`,
+    (err, data) => {
+      //if (process.env.MODE === "test") res.json(obj);
+      if (err) throw err;
+      console.log("data", data);
+      return res.render("pages/id_jeux", { data })
     }
   )
 })
@@ -204,9 +268,21 @@ app.get("/404", async (req, res) => {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-app.get("/admin", async (req, res) => {
-  res.render("pages/admin");
+app.route("/admin")
+  .get(async (req, res) => {
+    const user = await db.query("SELECT last_name, first_name, created_at, edited_at FROM users");
+    const categorie = await db.query("SELECT name, created_at, edited_at FROM categories");
+    const jeux = await db.query("SELECT titlejeux, created_at, edited_at FROM articles WHERE titlejeux IS NOT NULL");
+    const manga = await db.query("SELECT titlemangas, created_at, edited_at FROM articles WHERE titlemangas IS NOT NULL");
+    const film = await db.query("SELECT titlefilms, created_at, edited_at FROM articles WHERE titlefilms IS NOT NULL");
+    const serie = await db.query("SELECT titleseries, created_at, edited_at FROM articles WHERE titleseries IS NOT NULL");
+    const booster = await db.query("SELECT titlebooster, created_at, edited_at FROM articles WHERE titlebooster IS NOT NULL");
+    const deck = await db.query("SELECT titledeck, created_at, edited_at FROM articles WHERE titledeck IS NOT NULL");
+      //if (process.env.MODE === "test") res.json({ boosters, decks });
+      //else 
+        res.render("pages/admin", { booster, deck, user, categorie, jeux, manga, film, serie});
 });
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
