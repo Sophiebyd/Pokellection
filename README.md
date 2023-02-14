@@ -3,7 +3,7 @@
 
 ## **Install & module**
 
-[Adresse](https://www.npmjs.com/)
+[NPM](https://www.npmjs.com/)
 
 **Install**
 - `npm start`
@@ -43,14 +43,14 @@
 - [Postman](https://www.postman.com/)*
 
 ## **DOC**
-[W3school](https://www.w3schools.com/)
-[MDN](https://developer.mozilla.org/fr/)
-[Express](https://expressjs.com/)
-[Node.js V16.19.0](https://nodejs.org/docs/latest-v16.x/api/)
-[Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
-[Sass](https://sass-lang.com/documentation/)
-[Handlebars](https://handlebarsjs.com/guide/#what-is-handlebars)
-[Postman](https://learning.postman.com/docs/getting-started/introduction/)
+- [W3school](https://www.w3schools.com/)
+- [MDN](https://developer.mozilla.org/fr/)
+- [Express](https://expressjs.com/)
+- [Node.js V16.19.0](https://nodejs.org/docs/latest-v16.x/api/)
+- [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+- [Sass](https://sass-lang.com/documentation/)
+- [Handlebars](https://handlebarsjs.com/guide/#what-is-handlebars)
+- [Postman](https://learning.postman.com/docs/getting-started/introduction/)
 
 **Some powershell command**
 - `cd -yourway-` navigate in your files
