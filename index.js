@@ -8,6 +8,7 @@ const mysql = require("mysql");
 const methodOverride = require("method-override");
 const bodyParser = require("body-parser");
 require("dotenv").config();
+const { mailSend } = require("./utils/nodeMailer");
 
 /* création d'un serveur
 http
@@ -21,6 +22,9 @@ console.log("ça fonctionne !"); */
 
 // Déstructuration des variables d'environement (process.env)
 const { DB_DATABASE, DB_HOST, DB_PASSWORD, DB_USER, PORT_NODE } = process.env;
+
+// Import des middlewares
+const { isAdmin, isSession } = require('./middleware');
 const app = express();
 
 /*
@@ -94,9 +98,22 @@ app
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Contact
-app.get("/contact", (req, res) => {
-  res.render("pages/contact");
-});
+app
+  .get("/contact", (req, res) => {
+     res.render("pages/contact");
+    })
+
+  .post('/contact', (req, res) => {
+    const { lastname, firstname, email, subject, message } = req.body;
+
+    mailSend( `${lastname} ${firstname} <${email}>`, `email <${process.env.MAIL_USER}>`, subject ,`${email} ${message}`,  async function (err, info) {
+      if (err) throw err;
+      console.log(info);
+      res.redirect('/')
+    });
+  });
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -278,19 +295,18 @@ app.get("/404", async (req, res) => {
 
 app.route("/admin")
   .get(async (req, res) => {
-    const user = await db.query("SELECT last_name, first_name, created_at, edited_at FROM users");
-    const categorie = await db.query("SELECT name, created_at, edited_at FROM categories");
-    const jeux = await db.query("SELECT titlejeux, created_at, edited_at FROM articles WHERE titlejeux IS NOT NULL");
-    const manga = await db.query("SELECT titlemangas, created_at, edited_at FROM articles WHERE titlemangas IS NOT NULL");
-    const film = await db.query("SELECT titlefilms, created_at, edited_at FROM articles WHERE titlefilms IS NOT NULL");
-    const serie = await db.query("SELECT titleseries, created_at, edited_at FROM articles WHERE titleseries IS NOT NULL");
-    const booster = await db.query("SELECT titlebooster, created_at, edited_at FROM articles WHERE titlebooster IS NOT NULL");
-    const deck = await db.query("SELECT titledeck, created_at, edited_at FROM articles WHERE titledeck IS NOT NULL");
+    const user = await db.query(`SELECT * FROM users`);
+    const categorie = await db.query("SELECT * FROM categories");
+    const jeux = await db.query("SELECT * FROM articles WHERE titlejeux IS NOT NULL");
+    const manga = await db.query("SELECT * FROM articles WHERE titlemangas IS NOT NULL");
+    const film = await db.query("SELECT * FROM articles WHERE titlefilms IS NOT NULL");
+    const serie = await db.query("SELECT * FROM articles WHERE titleseries IS NOT NULL");
+    const booster = await db.query("SELECT * FROM articles WHERE titlebooster IS NOT NULL");
+    const deck = await db.query("SELECT * FROM articles WHERE titledeck IS NOT NULL");
       //if (process.env.MODE === "test") res.json({ boosters, decks });
       //else 
         res.render("pages/admin", { booster, deck, user, categorie, jeux, manga, film, serie});
 });
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

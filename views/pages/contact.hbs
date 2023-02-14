@@ -1,6 +1,6 @@
     <!-- content -->
     <div class="container mt-5 d-flex">
-        <form>
+        <form action="/contact" method="post">
             <h1 class="text-center mt-5">Contact</h1>
             <p class="text-center mt-5">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem beatae, cupiditate magni ratione odio
@@ -9,20 +9,23 @@
                 unde earum dolore quia tempora veritatis est. Ipsum, soluta culpa.</p>
             <div class="row g-5">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Nom" aria-label="First name">
+                    <input type="text" class="form-control" placeholder="Nom" aria-label="last name" name="lastname">
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Prenom" aria-label="Last name">
+                    <input type="text" class="form-control" placeholder="Prenom" aria-label="first name" name="firstname">
+                </div>
+                <div class="col">
+                    <input type="email" class="form-control" placeholder="Email" aria-label="mail" name="email">
                 </div>
             </div>
             <div class="mb-3 mt-3">
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Sujet">
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Sujet" name="subject">
             </div>
             <div class="form">
-                <textarea class="form-control" placeholder="Votre message" id="floatingTextarea"></textarea>
+                <textarea class="form-control" placeholder="Votre message" id="floatingTextarea" name="message"></textarea>
             </div>
             <div class="row justify-content-center">
-                <button type="button" class="btn btn-primary mt-3 col-md-2 col-sm-2">Envoyer</button>
+                <button type="submit" class="btn btn-primary mt-3 col-md-2 col-sm-2">Envoyer</button>
             </div>
         </form>
     </div>
