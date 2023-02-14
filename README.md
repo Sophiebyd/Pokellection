@@ -1,7 +1,7 @@
 # Pokellection 
 *with NodeJS V16, Bootstrap and Windows 11*
 
-## **Install module**
+## **Install & module**
 
 [Adresse](https://www.npmjs.com/)
 
@@ -9,6 +9,7 @@
 - `npm start`
 - `npm init`
 
+**Modules**
 - ExpressJS `npm install express`
 - Nodemon `npm install nodemon`
 - dotenv `npm install dotenv`
