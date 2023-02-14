@@ -19,7 +19,7 @@
 - mocha `npm install mocha`
 - method-override `npm install method-override`
 - chai `npm install chai`
-- handlebars `npm install handlebars
+- handlebars `npm install handlebars`
 
 **Read with modules**
 `npm run dev`
