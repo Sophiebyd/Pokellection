@@ -22,9 +22,9 @@
 - handlebars `npm install handlebars`
 
 **Read with modules**
-`npm run dev`
-`nodemon --exec "mocha tests/index.js"`
-`nodemon --exec "mocha tests/chai.js"`
+- `npm run dev`
+- `nodemon --exec "mocha tests/index.js"`
+- `nodemon --exec "mocha tests/chai.js"`
 
 ## **Outils**
 
@@ -50,3 +50,11 @@
 [Sass](https://sass-lang.com/documentation/)
 [Handlebars](https://handlebarsjs.com/guide/#what-is-handlebars)
 [Postman](https://learning.postman.com/docs/getting-started/introduction/)
+
+**Some powershell command**
+- `cd -yourway-` navigate in your files
+- `ls` check files
+
+**If issues with port then use it**
+- `netstat -a -n -o | findstr :'your port'`
+- `taskkill /pid yourPID /f`
