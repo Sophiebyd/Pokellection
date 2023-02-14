@@ -6,8 +6,8 @@
 [Adresse](https://www.npmjs.com/)
 
 **Install**
-`npm start`
-`npm init`
+- `npm start`
+- `npm init`
 
 - ExpressJS `npm install express`
 - Nodemon `npm install nodemon`
