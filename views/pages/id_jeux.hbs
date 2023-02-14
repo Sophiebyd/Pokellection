@@ -1,4 +1,4 @@
-<h1 class="display-5 text-center">Mon titre</h1>
+<h1 class="display-5 text-center">{{data.titlejeux}}</h1>
 <div class="container-fluid row justify-content-evenly align-content-center my-5">
     <!-- first container -->
     <div class="col-lg-3 col-md-7">
@@ -9,11 +9,7 @@
                 <h4 class="text-center">Résumé</h4>
             </div>
             <div class="text-center">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam ad, omnis debitis cupiditate
-                    assumenda
-                    voluptas expedita modi obcaecati! Iste quas placeat iure dignissimos libero itaque voluptatum,
-                    odit, aliquam ex voluptas maiores rem tenetur fugit unde enim eaque obcaecati, ab est.
-                </p>
+                <p>{{data.text}}</p>
             </div>
         </div>
 
@@ -24,23 +20,32 @@
             </div>
             <div>
                 <ul class="list-group">
-                    <li class="list-group-item">JVC</li>
-                    <li class="list-group-item">Gamekult</li>
-                    <li class="list-group-item">Metacritic</li>
-                    <li class="list-group-item">Jeuxactus</li>
+                    <li class="list-group-item"><a
+                            href="{{data.lien_1}}"
+                            class="text-decoration-none">Lien 1</a>
+                    <li class="list-group-item"><a
+                            href="{{data.lien_2}}"
+                            class="text-decoration-none">Lien 2</a>
+                    <li class="list-group-item"><a
+                            href="{{data.lien_3}}"
+                            class="text-decoration-none">Lien 3</a>
+                    <li class="list-group-item"><a
+                            href="{{data.lien-4}}"
+                            class="text-decoration-none">Lien 4</a>
                 </ul>
             </div>
         </div>
     </div>
+
     <!-- third content -->
     <div class="col-lg-3 col-md-7 mb-5 text-center">
-        <img src="https://cdn.idealo.com/folder/Product/201415/8/201415852/s4_produktbild_max/legendes-pokemon-arceus-switch.jpg"
+        <img src="{{data.picture}}"
             alt="pochettejeu" class="w-75">
     </div>
     <!-- fourth content-->
     <div class="col-lg-3 col-md-7">
         <div class="card">
-            <img src="https://www.serieously.com/app/uploads/2021/07/pokemon-staters-sondage.jpg" alt="pochettejeu"
+            <img src="{{data.caroussel}}" alt="pochettejeu"
                 class="w-100">
         </div>
         <div class="border my-5">
@@ -51,17 +56,17 @@
             <div class="text-center">
                 <ul class="list-group">
                     <li class="list-group-item"><a
-                            href="https://www.pokebip.com/page/jeuxvideo/legendes-pokemon-arceus/accueil"
-                            class="text-decoration-none">Pokebip</a>
+                            href="{{data.lien_1}}"
+                            class="text-decoration-none">Lien 1</a>
                     <li class="list-group-item"><a
-                            href="https://www.pokebip.com/page/jeuxvideo/legendes-pokemon-arceus/accueil"
-                            class="text-decoration-none">Pokebip</a>
+                            href="{{data.lien_2}}"
+                            class="text-decoration-none">Lien 2</a>
                     <li class="list-group-item"><a
-                            href="https://www.pokebip.com/page/jeuxvideo/legendes-pokemon-arceus/accueil"
-                            class="text-decoration-none">Pokebip</a>
+                            href="{{data.lien_3}}"
+                            class="text-decoration-none">Lien 3</a>
                     <li class="list-group-item"><a
-                            href="https://www.pokebip.com/page/jeuxvideo/legendes-pokemon-arceus/accueil"
-                            class="text-decoration-none">Pokebip</a>
+                            href="{{data.lien-4}}"
+                            class="text-decoration-none">Lien 4</a>
                 </ul>
             </div>
         </div>

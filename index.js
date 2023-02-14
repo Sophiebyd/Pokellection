@@ -63,14 +63,17 @@ app.use(bodyParser.json());
  ******************************************************/
 app.use("/assets", express.static("public"));
 
+// ! Import des helpers
+const { limit } = require('./helper')
 // configure handlebar
-app.engine(
-  "hbs",
-  engine({
-    extname: "hbs",
-    defaultLayout: "main",
-  })
-);
+app.engine('hbs', engine({
+  // ! initialisation des helpers dans notre handlebars 
+  helpers: {
+    limit
+  },
+  extname: 'hbs',
+  defaultLayout: 'main'
+}));
 app.set("view engine", "hbs");
 app.set("views", "./views");
 
@@ -150,84 +153,89 @@ app.route("/animes")
 
 app
   .get("/series/:id", (req, res) => {
+    const { id } = req.params
   // Récupération de tout les articles
   db.query(
-    `SELECT text, titleseries, picture,  FROM articles WHERE titleseries IS NOT NULL`,
+    `SELECT * FROM articles WHERE Id_articles=${id}`,
     (err, data) => {
       //if (process.env.MODE === "test") res.json(obj);
       if (err) throw err;
       console.log("data", data);
-      return res.render("pages/id_series", { data })
+      return res.render("pages/id_series", { data : data[0] })
     }
   )
 })
 
 app
   .get("/films/:id", (req, res) => {
+    const { id } = req.params
   // Récupération de tout les articles
   db.query(
-    `SELECT * FROM articles WHERE titlejeux IS NOT NULL`,
+    `SELECT * FROM articles WHERE Id_articles=${id}`,
     (err, data) => {
       //if (process.env.MODE === "test") res.json(obj);
       if (err) throw err;
       console.log("data", data);
-      return res.render("pages/id_films", { data })
+      return res.render("pages/id_films", { data : data[0] })
     }
   )
 })
 
 app
   .get("/mangas/:id", (req, res) => {
+    const { id } = req.params
   // Récupération de tout les articles
   db.query(
-    `SELECT * FROM articles WHERE titlejeux IS NOT NULL`,
+    `SELECT * FROM articles WHERE Id_articles=${id}`,
     (err, data) => {
       //if (process.env.MODE === "test") res.json(obj);
       if (err) throw err;
       console.log("data", data);
-      return res.render("pages/id_mangas", { data })
+      return res.render("pages/id_mangas", { data : data[0] })
     }
   )
 })
 
-app
-  .get("/boosters/:id", (req, res) => {
+.get("/boosters/:id", (req, res) => {
   // Récupération de tout les articles
+  const { id } = req.params
   db.query(
-    `SELECT * FROM articles WHERE titlejeux IS NOT NULL`,
+    `SELECT * FROM articles WHERE Id_articles=${id}`,
     (err, data) => {
       //if (process.env.MODE === "test") res.json(obj);
       if (err) throw err;
       console.log("data", data);
-      return res.render("pages/id_boosters", { data })
+      return res.render("pages/id_boosters", { data : data[0] })
     }
   )
 })
 
 app
   .get("/decks/:id", (req, res) => {
+    const { id } = req.params
   // Récupération de tout les articles
   db.query(
-    `SELECT * FROM articles WHERE titlejeux IS NOT NULL`,
+    `SELECT * FROM articles WHERE Id_articles=${id}`,
     (err, data) => {
       //if (process.env.MODE === "test") res.json(obj);
       if (err) throw err;
       console.log("data", data);
-      return res.render("pages/id_decks", { data })
+      return res.render("pages/id_decks", { data : data[0] })
     }
   )
 })
 
 app
   .get("/jeux/:id", (req, res) => {
+    const { id } = req.params
   // Récupération de tout les articles
   db.query(
-    `SELECT * FROM articles WHERE titlejeux IS NOT NULL`,
+    `SELECT * FROM articles WHERE Id_articles=${id}`,
     (err, data) => {
       //if (process.env.MODE === "test") res.json(obj);
       if (err) throw err;
       console.log("data", data);
-      return res.render("pages/id_jeux", { data })
+      return res.render("pages/id_jeux", { data : data[0] })
     }
   )
 })
