@@ -40,7 +40,7 @@
 - [Workbench](https://www.mysql.com/products/workbench/)
 
 **Not yet utilised** 
-- [Postman](https://www.postman.com/)*
+- [Postman](https://www.postman.com/)
 
 ## **DOC**
 - [W3school](https://www.w3schools.com/)
