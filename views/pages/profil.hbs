@@ -20,7 +20,73 @@
         </div>
     </div>
     <div class="col-md-6 container-fluid text-center">
-        <button type="button" class="btn btn-primary">Modifier</button>
-        <button type="button" class="btn btn-danger">Supprimer</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit">Modifier</button>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete">Supprimer</button>
     </div>
 </form>
+
+<!-- Modal 1 -->
+<div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <!-- formulaire -->
+                <form>
+                    <div class="row g-3">
+                        <div>
+                            <input type="text" class="form-control" placeholder="Changer de pseudo" aria-label="pseudo"
+                                name="pseudo">
+                        </div>
+                        <div>
+                            <input type="email" class="form-control" placeholder="Changer d'email" aria-label="mail"
+                                name="email">
+                        </div>
+                        <div>
+                            <input type="password" class="form-control" placeholder="Changer de Mot de passe"
+                                aria-label="password" name="password">
+                        </div>
+                        <div>
+                            <input type="date" class="form-control" placeholder="Date de naissance"
+                                aria-label="birthday" name="birthday">
+                        </div>
+                        <div>
+                            <label>Valider les changements</label>
+                            <input type="password" class="form-control" placeholder="Reconfirmer avec le mot de passe" aria-label="password"
+                                name="password">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Modifier</button>
+                <button type="button" class="btn btn-danger">Supprimer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 1 -->
+<div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="fw-bold">Souhaitez-vous supprimer le profil ?</p>
+                <p>Une fois l'action effectuée, il n'y aura pas de restitution de compte.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Supprimer</button>
+                <button type="button" class="btn btn-danger">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>
