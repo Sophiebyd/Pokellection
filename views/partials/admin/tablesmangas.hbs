@@ -1,8 +1,8 @@
 <tr>
   <th>{{this.titlemangas}}</th>
-  <th><a href="/mangas/{{this.Id_articles}}" class="text-decoration-none">{{this.Id_articles}}</a></th>
-  <th>{{this.created_at}}</th>
-  <th>{{this.edited_at}}</th>
+  <th class="text-center"><a href="/mangas/{{this.Id_articles}}" class="text-decoration-none">{{this.Id_articles}}</a></th>
+  <th class="text-center">{{formatDate this.created_at "DD-MM-YYYY"}}</th>
+  <th class="text-center">{{formatDate this.edited_at "DD-MM-YYYY"}}</th>
   <th class="text-center">
     <a role="button" data-bs-toggle="modal" data-bs-target="#Modal_edit_mangas"><i class="bi bi-pencil-square"></i></a>
     <a role="button" data-bs-toggle="modal" data-bs-target="#Modal_delete_mangas"><i class="bi bi-trash3"></i></a>
@@ -68,7 +68,7 @@
             </div>
           </div>
         </form>
-        
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Modifier</button>

@@ -4,16 +4,16 @@
 </form>
 
 <!-- first table -->
-<div class="container table-responsive-sm mt-2 col-10">
+<div class="container table-responsive-sm mt-2 col-5">
     <h1 class="text-center display-5">Table users</h1>
     <table class="table table-hover table-striped">
         <thead class="table-primary">
             <tr>
-                <th class="col text-secondary">Nom</th>
-                <th class="col text-secondary text-center">prénom</th>
-                <th class="col text-secondary text-center">Date crée</th>
-                <th class="col text-secondary text-center">Edité le</th>
-                <th class="col text-secondary text-center">Action</th>
+                <th class="col-1 text-secondary text-center">Nom</th>
+                <th class="col-1 text-secondary text-center">prénom</th>
+                <th class="col-1 text-secondary text-center">Date crée</th>
+                <th class="col-1 text-secondary text-center">Edité le</th>
+                <th class="col-1 text-secondary text-center">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -26,7 +26,7 @@
 
 
 <!-- second table -->
-<div class="container table-responsive-sm mt-2 col-10">
+<div class="container table-responsive-sm mt-2 col-4">
     <h1 class="text-center display-5">Table categories</h1>
     <div class="d-flex justify-content-end">
         <a role="button" data-bs-toggle="modal" data-bs-target="#ajout_categories" class="me-4 mb-3"><i
@@ -35,10 +35,10 @@
     <table class="table table-hover table-striped">
         <thead class="table-primary">
             <tr>
-                <th class="col text-secondary">Titre</th>
-                <th class="col text-secondary text-center">Date crée</th>
-                <th class="col text-secondary text-center">Edité le</th>
-                <th class="col text-secondary text-center">Action</th>
+                <th class="col-1 text-secondary text-center">Titre</th>
+                <th class="col-1 text-secondary text-center">Date crée</th>
+                <th class="col-1 text-secondary text-center">Edité le</th>
+                <th class="col-1 text-secondary text-center">Action</th>
             </tr>
         <tbody>
             {{#each categorie}}
@@ -82,7 +82,7 @@
 </div>
 
 <!-- third table -->
-<div class="container table-responsive-sm mt-2 col-10">
+<div class="container table-responsive-sm mt-2 col-7">
     <h1 class="text-center display-5">Table jeux</h1>
     <div class="d-flex justify-content-end">
         <a role="button" data-bs-toggle="modal" data-bs-target="#ajout_jeux" class="me-4 mb-3"><i
@@ -91,11 +91,11 @@
     <table class="table table-hover table-striped">
         <thead class="table-primary">
             <tr>
-                <th class="col text-secondary">Titre</th>
-                <th class="col text-secondary">Article</th>
-                <th class="col text-secondary text-center">Date crée</th>
-                <th class="col text-secondary text-center">Edité le</th>
-                <th class="col text-secondary text-center">Action</th>
+                <th class="col-3 text-secondary">Titre</th>
+                <th class="col-1 text-secondary text-center">Article</th>
+                <th class="col-1 text-secondary text-center">Date crée</th>
+                <th class="col-1 text-secondary text-center">Edité le</th>
+                <th class="col-1 text-secondary text-center">Action</th>
             </tr>
         <tbody>
             {{#each jeux}}
@@ -182,7 +182,7 @@
 </div>
 
 <!-- fourth table -->
-<div class="container table-responsive-sm mt-2 col-10">
+<div class="container table-responsive-sm mt-2 col-7">
     <h1 class="text-center display-5">Table mangas</h1>
     <div class="d-flex justify-content-end">
         <a role="button" data-bs-toggle="modal" data-bs-target="#ajout_mangas" class="me-4 mb-3"><i
@@ -191,11 +191,11 @@
     <table class="table table-hover table-striped">
         <thead class="table-primary">
             <tr>
-                <th class="col text-secondary">Titre</th>
-                <th class="col text-secondary">Article</th>
-                <th class="col text-secondary text-center">Date crée</th>
-                <th class="col text-secondary text-center">Edité le</th>
-                <th class="col text-secondary text-center">Action</th>
+                <th class="col-3 text-secondary">Titre</th>
+                <th class="col-1 text-secondary text-center">Article</th>
+                <th class="col-1 text-secondary text-center">Date crée</th>
+                <th class="col-1 text-secondary text-center">Edité le</th>
+                <th class="col-1 text-secondary text-center">Action</th>
             </tr>
         <tbody>
             {{#each manga}}
@@ -282,8 +282,8 @@
 </div>
 
 <!-- fifth table -->
-<div class="container table-responsive-sm mt-2 col-10">
-    <h1 class="text-center display-5">Table series</h1>
+<div class="container table-responsive-sm mt-2 col-7">
+    <h1 class="text-center display-5">Table séries</h1>
     <div class="d-flex justify-content-end">
         <a role="button" data-bs-toggle="modal" data-bs-target="#ajout_series" class="me-4 mb-3"><i
                 class="bi bi-plus-square"></i></a>
@@ -291,11 +291,11 @@
     <table class="table table-hover table-striped">
         <thead class="table-primary">
             <tr>
-                <th class="col text-secondary">Titre</th>
-                <th class="col text-secondary">Article</th>
-                <th class="col text-secondary text-center">Date crée</th>
-                <th class="col text-secondary text-center">Edité le</th>
-                <th class="col text-secondary text-center">Action</th>
+                <th class="col-3 text-secondary">Titre</th>
+                <th class="col-1 text-secondary text-center">Article</th>
+                <th class="col-1 text-secondary text-center">Date crée</th>
+                <th class="col-1 text-secondary text-center">Edité le</th>
+                <th class="col-1 text-secondary text-center">Action</th>
             </tr>
         <tbody>
             {{#each serie}}
@@ -382,7 +382,7 @@
 </div>
 
 <!-- sixth table -->
-<div class="container table-responsive-sm mt-2 col-10">
+<div class="container table-responsive-sm mt-2 col-7">
     <h1 class="text-center display-5">Table films</h1>
     <div class="d-flex justify-content-end">
         <a role="button" data-bs-toggle="modal" data-bs-target="#ajout_films" class="me-4 mb-3"><i
@@ -391,11 +391,11 @@
     <table class="table table-hover table-striped">
         <thead class="table-primary">
             <tr>
-                <th class="col text-secondary">Titre</th>
-                <th class="col text-secondary">Article</th>
-                <th class="col text-secondary text-center">Date crée</th>
-                <th class="col text-secondary text-center">Edité le</th>
-                <th class="col text-secondary text-center">Action</th>
+                <th class="col-3 text-secondary">Titre</th>
+                <th class="col-1 text-secondary text-center">Article</th>
+                <th class="col-1 text-secondary text-center">Date crée</th>
+                <th class="col-1 text-secondary text-center">Edité le</th>
+                <th class="col-1 text-secondary text-center">Action</th>
             </tr>
         <tbody>
             {{#each film}}
@@ -477,7 +477,7 @@
 </div>
 
 <!-- seventh table -->
-<div class="container table-responsive-sm mt-2 col-10">
+<div class="container table-responsive-sm mt-2 col-5">
     <h1 class="text-center display-5">Table boosters</h1>
     <div class="d-flex justify-content-end">
         <a role="button" data-bs-toggle="modal" data-bs-target="#ajout_boosters" class="me-4 mb-3"><i
@@ -486,11 +486,11 @@
     <table class="table table-hover table-striped">
         <thead class="table-primary">
             <tr>
-                <th class="col text-secondary">Titre</th>
-                <th class="col text-secondary">Article</th>
-                <th class="col text-secondary text-center">Date crée</th>
-                <th class="col text-secondary text-center">Edité le</th>
-                <th class="col text-secondary text-center">Action</th>
+                <th class="col-1 text-secondary">Titre</th>
+                <th class="col-1 text-secondary text-center">Article</th>
+                <th class="col-1 text-secondary text-center">Date crée</th>
+                <th class="col-1 text-secondary text-center">Edité le</th>
+                <th class="col-1 text-secondary text-center">Action</th>
             </tr>
         <tbody>
             {{#each booster}}
@@ -574,7 +574,7 @@
 </div>
 
 <!-- eight table -->
-<div class="container table-responsive-sm mt-2 col-10">
+<div class="container table-responsive-sm mt-2 col-5">
     <h1 class="text-center display-5">Table decks</h1>
     <div class="d-flex justify-content-end">
         <a role="button" data-bs-toggle="modal" data-bs-target="#ajout_decks" class="me-4 mb-3"><i
@@ -583,11 +583,11 @@
     <table class="table table-hover table-striped">
         <thead class="table-primary">
             <tr>
-                <th class="col text-secondary">Titre</th>
-                <th class="col text-secondary">Article</th>
-                <th class="col text-secondary text-center">Date crée</th>
-                <th class="col text-secondary text-center">Edité le</th>
-                <th class="col text-secondary text-center">Action</th>
+                <th class="col-1 text-secondary">Titre</th>
+                <th class="col-1 text-secondary">Article</th>
+                <th class="col-1 text-secondary text-center">Date crée</th>
+                <th class="col-1 text-secondary text-center">Edité le</th>
+                <th class="col-1 text-secondary text-center">Action</th>
             </tr>
         <tbody>
             {{#each deck}}

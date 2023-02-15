@@ -1,10 +1,11 @@
 <tr>
-  <th>{{this.last_name}}</th>
-  <th>{{this.first_name}}</th>
-  <th>{{this.created_at}}</th>
-  <th>{{this.edited_at}}</th>
+  <th class="text-center">{{this.last_name}}</th>
+  <th class="text-center">{{this.first_name}}</th>
+  <th class="text-center">{{formatDate this.created_at "DD-MM-YYYY"}}</th>
+  <th class="text-center">{{formatDate this.edited_at "DD-MM-YYYY"}}</th>
   <th class="text-center">
-    <a role="button" data-bs-toggle="modal" data-bs-target="#Modal_edit_categories"><i class="bi bi-pencil-square"></i></a>
+    <a role="button" data-bs-toggle="modal" data-bs-target="#Modal_edit_categories"><i
+        class="bi bi-pencil-square"></i></a>
     <a role="button" data-bs-toggle="modal" data-bs-target="#Modal_delete_categories"><i class="bi bi-trash3"></i></a>
   </th>
 </tr>
@@ -38,7 +39,8 @@
               <input type="password" class="form-control" placeholder="Password" aria-label="password" name="password">
             </div>
             <div>
-              <input type="date" class="form-control" placeholder="Date de naissance" aria-label="birthday" name="birthday">
+              <input type="date" class="form-control" placeholder="Date de naissance" aria-label="birthday"
+                name="birthday">
             </div>
           </div>
         </form>

@@ -1,8 +1,8 @@
 <tr>
-  <th>{{this.titledeck}}</th>
-  <th><a href="/decks/{{this.Id_articles}}" class="text-decoration-none">{{this.Id_articles}}</a></th>
-  <th>{{this.created_at}}</th>
-  <th>{{this.edited_at}}</th>
+  <th col-1 text-secondary text-center>{{this.titledeck}}</th>
+  <th col-1 text-secondary text-center><a href="/decks/{{this.Id_articles}}" class="text-decoration-none">{{this.Id_articles}}</a></th>
+  <th col-1 text-secondary text-center>{{formatDate this.created_at "DD-MM-YYYY"}}</th>
+  <th col-1 text-secondary text-center>{{formatDate this.edited_at "DD-MM-YYYY"}}</th>
   <th class="text-center">
     <a role="button" data-bs-toggle="modal" data-bs-target="#Modal_edit_deck"><i class="bi bi-pencil-square"></i></a>
     <a role="button" data-bs-toggle="modal" data-bs-target="#Modal_delete_deck"><i class="bi bi-trash3"></i></a>
@@ -27,8 +27,7 @@
               <input type="text" class="form-control" placeholder="Titre" aria-label="title" name="title">
             </div>
             <div>
-              <input type="text" class="form-control" placeholder="collection" aria-label="collectio"
-                name="collectio">
+              <input type="text" class="form-control" placeholder="collection" aria-label="collectio" name="collectio">
             </div>
             <div class="mb-3">
               <label for="formFile" class="form-label">Image de couverture</label>
