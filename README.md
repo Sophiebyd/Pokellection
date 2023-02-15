@@ -29,11 +29,11 @@
 
 ## **Outils**
 
-**Graphic**
+**Graphics**
 - [Draw.io](https://app.diagrams.net/)
 - [Figma](https://www.figma.com/fr/)
 
-**MCD/MLC**
+**MCD/MLD**
 - [Looping](https://www.looping-mcd.fr/)
 
 **MYSQL**
