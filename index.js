@@ -68,12 +68,13 @@ app.use(bodyParser.json());
 app.use("/assets", express.static("public"));
 
 // ! Import des helpers
-const { limit } = require('./helper')
+const {  formatDate } = require('./helper')
+
 // configure handlebar
 app.engine('hbs', engine({
   // ! initialisation des helpers dans notre handlebars 
   helpers: {
-    limit
+    formatDate
   },
   extname: 'hbs',
   defaultLayout: 'main'
