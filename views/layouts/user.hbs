@@ -13,6 +13,8 @@
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg bg-secondary">
     <div class="container-fluid">
+      <a href="/profil"><img src="https://puu.sh/Jxyfm/bd90fd2c6e.png" class="rounded-circle me-2"
+          style="width:35px; height:auto" alt="Kyousuke"></a>
       <a href="/" class="navbar-brand text-white">Pokéllection</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
         aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,7 +23,7 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" href="/connexion">Connexion</a>
+            <a role="button" href="/" class="nav-link text-white">Déconnexion</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="/jeuxvideos">Jeux
@@ -41,6 +43,25 @@
           <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search" />
           <button class="btn btn-outline-light" type="submit">Rechercher</button>
         </form>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Déconnexion</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Souhaitez-vous déconnecter ?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">oui</button>
+            <button type="button" class="btn btn-danger">non</button>
+          </div>
+        </div>
       </div>
     </div>
   </nav>

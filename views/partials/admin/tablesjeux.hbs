@@ -1,34 +1,16 @@
 <tr>
   <th>{{this.titlejeux}}</th>
-  <th>{{this.Id_articles}}</th>
+  <th><a href="/jeux/{{this.Id_articles}}" class="text-decoration-none">{{this.Id_articles}}</a></th>
   <th>{{this.created_at}}</th>
   <th>{{this.edited_at}}</th>
-  <th class="text-center"><a role="button" data-bs-toggle="modal" data-bs-target="#Modal1"><i
-        class="bi bi-plus-square"></i></a>
-    <a role="button" data-bs-toggle="modal" data-bs-target="#Modal2"><i class="bi bi-pencil-square"></i></a>
-    <a role="button" data-bs-toggle="modal" data-bs-target="#Modal3"><i class="bi bi-trash3"></i></a>
+  <th class="text-center">
+    <a role="button" data-bs-toggle="modal" data-bs-target="#Modal_edit_jeux"><i class="bi bi-pencil-square"></i></a>
+    <a role="button" data-bs-toggle="modal" data-bs-target="#Modal_delete_jeux"><i class="bi bi-trash3"></i></a>
   </th>
 </tr>
 
-<div class="modal" tabindex="-1" id="Modal1" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Ajouter</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ajouter</button>
-        <button type="button" class="btn btn-danger">Annuler</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal" tabindex="-1" id="Modal2" aria-hidden="true">
+<!-- modal 1 -->
+<div class="modal" tabindex="-1" id="Modal_edit_jeux" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -36,7 +18,58 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+
+        <!-- formulaire -->
+        <form>
+          <div class="row g-3">
+            <div>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Résumé"></textarea>
+            </div>
+            <div>
+              <input type="text" class="form-control" placeholder="Titre" aria-label="title" name="title">
+            </div>
+            <div>
+              <input type="date" class="form-control" placeholder="Date de sortie" aria-label="release date"
+                name="release date">
+            </div>
+            <div>
+              <input type="version" class="form-control" placeholder="Version" aria-label="version" name="eversion">
+            </div>
+            <div class="mb-3">
+              <label for="formFile" class="form-label">Image de couverture</label>
+              <input class="form-control" type="file" id="formpicture">
+            </div>
+            <div class="mb-3">
+              <label for="formFile" class="form-label">Image de caroussel 1</label>
+              <input class="form-control" type="file" id="form_caroussel_1">
+            </div>
+            <div class="mb-3">
+              <label for="formFile" class="form-label">Image de caroussel 2</label>
+              <input class="form-control" type="file" id="form_caroussel_2">
+            </div>
+            <div class="mb-3">
+              <label for="formFile" class="form-label">Image de caroussel 3</label>
+              <input class="form-control" type="file" id="form_caroussel_3">
+            </div>
+            <div class="mb-3">
+              <label for="formFile" class="form-label">Image de caroussel 4</label>
+              <input class="form-control" type="file" id="form_caroussel_4">
+            </div>
+            <div>
+              <input type="text" class="form-control" placeholder="Lien 1" aria-label="link_1" name="link_1">
+            </div>
+            <div>
+              <input type="text" class="form-control" placeholder="Lien 2" aria-label="link_2" name="link_2">
+            </div>
+            <div>
+              <input type="text" class="form-control" placeholder="Lien 3" aria-label="link_3" name="link_3">
+            </div>
+            <div>
+              <input type="text" class="form-control" placeholder="Lien 4" aria-label="link_4" name="link_4">
+            </div>
+          </div>
+        </form>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Modifier</button>
@@ -46,7 +79,8 @@
   </div>
 </div>
 
-<div class="modal" tabindex="-1" id="Modal3" aria-hidden="true">
+<!-- modal 2 -->
+<div class="modal" tabindex="-1" id="Modal_delete_jeux" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -54,7 +88,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <p>Souhaitez-vous supprimer l'article de ce jeu ?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Supprimer</button>

@@ -3,9 +3,9 @@
     <button class="btn btn-outline-primary " type="submit">Rechercher</button>
 </form>
 
-
+<!-- first table -->
 <div class="container table-responsive-sm mt-2 col-10">
-    <h1 class="text-center display-5 mt-3">Liste users</h1>
+    <h1 class="text-center display-5">Table users</h1>
     <table class="table table-hover table-striped">
         <thead class="table-primary">
             <tr>
@@ -13,39 +13,81 @@
                 <th class="col text-secondary text-center">prénom</th>
                 <th class="col text-secondary text-center">Date crée</th>
                 <th class="col text-secondary text-center">Edité le</th>
-                <th class="col-1 text-secondary text-center">Action</th>
+                <th class="col text-secondary text-center">Action</th>
             </tr>
-            <tbody>
+        </thead>
+        <tbody>
             {{#each user}}
             {{>admin/tablesusers data=this}}
             {{/each}}
-            </tbody>
-        </thead>
+        </tbody>
     </table>
 </div>
 
-<div class="container table-responsive-sm mt-2 col-7">
-    <h1 class="text-center display-5 mt-3">Liste Catégorie</h1>
+
+<!-- second table -->
+<div class="container table-responsive-sm mt-2 col-10">
+    <h1 class="text-center display-5">Table categories</h1>
+    <div class="d-flex justify-content-end">
+        <a role="button" data-bs-toggle="modal" data-bs-target="#ajout_categories" class="me-4 mb-3"><i
+                class="bi bi-plus-square"></i></a>
+    </div>
     <table class="table table-hover table-striped">
         <thead class="table-primary">
             <tr>
                 <th class="col text-secondary">Titre</th>
-                <th class="col text-secondary">Article</th>
                 <th class="col text-secondary text-center">Date crée</th>
                 <th class="col text-secondary text-center">Edité le</th>
-                <th class="col-1 text-secondary text-center">Action</th>
+                <th class="col text-secondary text-center">Action</th>
             </tr>
-            <tbody>
+        <tbody>
             {{#each categorie}}
             {{>admin/tablescategories data=this}}
             {{/each}}
-            </tbody>
+        </tbody>
         </thead>
     </table>
 </div>
 
-<div class="container table-responsive-sm mt-2 col-7">
-    <h1 class="text-center display-5 mt-3">Liste Jeux vidéos</h1>
+<!-- modal 2 -->
+<div class="modal" tabindex="-1" id="ajout_categories" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Ajouter</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <!-- formulaire -->
+                <form>
+                    <div class="row g-3">
+                        <div>
+                            <input type="text" class="form-control" placeholder="Nom" aria-label="name" name="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label"></label>
+                            <input class="form-control" type="file" id="formFile">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ajouter</button>
+                <button type="button" class="btn btn-danger">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- third table -->
+<div class="container table-responsive-sm mt-2 col-10">
+    <h1 class="text-center display-5">Table jeux</h1>
+    <div class="d-flex justify-content-end">
+        <a role="button" data-bs-toggle="modal" data-bs-target="#ajout_jeux" class="me-4 mb-3"><i
+                class="bi bi-plus-square"></i></a>
+    </div>
     <table class="table table-hover table-striped">
         <thead class="table-primary">
             <tr>
@@ -53,20 +95,99 @@
                 <th class="col text-secondary">Article</th>
                 <th class="col text-secondary text-center">Date crée</th>
                 <th class="col text-secondary text-center">Edité le</th>
-                <th class="col-1 text-secondary text-center">Action</th>
+                <th class="col text-secondary text-center">Action</th>
             </tr>
-            <tbody>
+        <tbody>
             {{#each jeux}}
             {{>admin/tablesjeux data=this}}
             {{/each}}
-            </tbody>
+        </tbody>
         </thead>
     </table>
 </div>
 
+<!-- modal 3 -->
+<div class="modal" tabindex="-1" id="ajout_jeux" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Ajouter</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
 
-<div class="container table-responsive-sm mt-2 col-7">
-    <h1 class="text-center display-5 mt-3">Liste Mangas</h1>
+                <!-- formulaire -->
+                <form>
+                    <div class="row g-3">
+                        <div>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
+                                placeholder="Résumé"></textarea>
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Titre" aria-label="title" name="title">
+                        </div>
+                        <div>
+                            <input type="date" class="form-control" placeholder="Date de sortie"
+                                aria-label="release date" name="release date">
+                        </div>
+                        <div>
+                            <input type="version" class="form-control" placeholder="Version" aria-label="version"
+                                name="eversion">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de couverture</label>
+                            <input class="form-control" type="file" id="formpicture">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 1</label>
+                            <input class="form-control" type="file" id="form_caroussel_1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 2</label>
+                            <input class="form-control" type="file" id="form_caroussel_2">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 3</label>
+                            <input class="form-control" type="file" id="form_caroussel_3">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 4</label>
+                            <input class="form-control" type="file" id="form_caroussel_4">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 1" aria-label="link_1"
+                                name="link_1">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 2" aria-label="link_2"
+                                name="link_2">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 3" aria-label="link_3"
+                                name="link_3">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 4" aria-label="link_4"
+                                name="link_4">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ajouter</button>
+                <button type="button" class="btn btn-danger">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- fourth table -->
+<div class="container table-responsive-sm mt-2 col-10">
+    <h1 class="text-center display-5">Table mangas</h1>
+    <div class="d-flex justify-content-end">
+        <a role="button" data-bs-toggle="modal" data-bs-target="#ajout_mangas" class="me-4 mb-3"><i
+                class="bi bi-plus-square"></i></a>
+    </div>
     <table class="table table-hover table-striped">
         <thead class="table-primary">
             <tr>
@@ -74,20 +195,99 @@
                 <th class="col text-secondary">Article</th>
                 <th class="col text-secondary text-center">Date crée</th>
                 <th class="col text-secondary text-center">Edité le</th>
-                <th class="col-1 text-secondary text-center">Action</th>
+                <th class="col text-secondary text-center">Action</th>
             </tr>
-            <tbody>
+        <tbody>
             {{#each manga}}
             {{>admin/tablesmangas data=this}}
             {{/each}}
-            </tbody>
+        </tbody>
         </thead>
     </table>
 </div>
 
+<!-- modal 4 -->
+<div class="modal" tabindex="-1" id="ajout_mangas" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Ajouter</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
 
-<div class="container table-responsive-sm mt-2 col-7">
-    <h1 class="text-center display-5 mt-3">Liste Séries</h1>
+                <!-- formulaire -->
+                <form>
+                    <div class="row g-3">
+                        <div>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
+                                placeholder="Résumé"></textarea>
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Titre" aria-label="title" name="title">
+                        </div>
+                        <div>
+                            <input type="date" class="form-control" placeholder="Parution" aria-label="release date"
+                                name="release date">
+                        </div>
+                        <div>
+                            <input type="number" class="form-control" name="number" placeholder="Nombre de tomes">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de couverture</label>
+                            <input class="form-control" type="file" id="formpicture">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 1</label>
+                            <input class="form-control" type="file" id="form_caroussel_1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 2</label>
+                            <input class="form-control" type="file" id="form_caroussel_2">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 3</label>
+                            <input class="form-control" type="file" id="form_caroussel_3">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 4</label>
+                            <input class="form-control" type="file" id="form_caroussel_4">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 1" aria-label="link_1"
+                                name="link_1">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 2" aria-label="link_2"
+                                name="link_2">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 3" aria-label="link_3"
+                                name="link_3">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 4" aria-label="link_4"
+                                name="link_4">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ajouter</button>
+                <button type="button" class="btn btn-danger">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- fifth table -->
+<div class="container table-responsive-sm mt-2 col-10">
+    <h1 class="text-center display-5">Table series</h1>
+    <div class="d-flex justify-content-end">
+        <a role="button" data-bs-toggle="modal" data-bs-target="#ajout_series" class="me-4 mb-3"><i
+                class="bi bi-plus-square"></i></a>
+    </div>
     <table class="table table-hover table-striped">
         <thead class="table-primary">
             <tr>
@@ -95,20 +295,99 @@
                 <th class="col text-secondary">Article</th>
                 <th class="col text-secondary text-center">Date crée</th>
                 <th class="col text-secondary text-center">Edité le</th>
-                <th class="col-1 text-secondary text-center">Action</th>
+                <th class="col text-secondary text-center">Action</th>
             </tr>
-            <tbody>
+        <tbody>
             {{#each serie}}
             {{>admin/tablesseries data=this}}
             {{/each}}
-            </tbody>
+        </tbody>
         </thead>
     </table>
 </div>
 
+<!-- modal 5 -->
+<div class="modal" tabindex="-1" id="ajout_series" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Ajouter</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
 
-<div class="container table-responsive-sm mt-2 col-7">
-    <h1 class="text-center display-5 mt-3">Liste films</h1>
+                <!-- formulaire -->
+                <form>
+                    <div class="row g-3">
+                        <div>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
+                                placeholder="Résumé"></textarea>
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Titre" aria-label="title" name="title">
+                        </div>
+                        <div>
+                            <input type="date" class="form-control" placeholder="Parution" aria-label="release date"
+                                name="release date">
+                        </div>
+                        <div>
+                            <input type="number" class="form-control" name="number" placeholder="Nombre d'épisodes">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de couverture</label>
+                            <input class="form-control" type="file" id="formpicture">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 1</label>
+                            <input class="form-control" type="file" id="form_caroussel_1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 2</label>
+                            <input class="form-control" type="file" id="form_caroussel_2">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 3</label>
+                            <input class="form-control" type="file" id="form_caroussel_3">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 4</label>
+                            <input class="form-control" type="file" id="form_caroussel_4">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 1" aria-label="link_1"
+                                name="link_1">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 2" aria-label="link_2"
+                                name="link_2">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 3" aria-label="link_3"
+                                name="link_3">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 4" aria-label="link_4"
+                                name="link_4">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ajouter</button>
+                <button type="button" class="btn btn-danger">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- sixth table -->
+<div class="container table-responsive-sm mt-2 col-10">
+    <h1 class="text-center display-5">Table films</h1>
+    <div class="d-flex justify-content-end">
+        <a role="button" data-bs-toggle="modal" data-bs-target="#ajout_films" class="me-4 mb-3"><i
+                class="bi bi-plus-square"></i></a>
+    </div>
     <table class="table table-hover table-striped">
         <thead class="table-primary">
             <tr>
@@ -116,20 +395,94 @@
                 <th class="col text-secondary">Article</th>
                 <th class="col text-secondary text-center">Date crée</th>
                 <th class="col text-secondary text-center">Edité le</th>
-                <th class="col-1 text-secondary text-center">Action</th>
+                <th class="col text-secondary text-center">Action</th>
             </tr>
-            <tbody>
+        <tbody>
             {{#each film}}
             {{>admin/tablesfilms data=this}}
             {{/each}}
-            </tbody>
+        </tbody>
         </thead>
     </table>
 </div>
 
+<!-- modal 6 -->
+<div class="modal" tabindex="-1" id="ajout_films" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Ajouter</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- formulaire -->
+                <form>
+                    <div class="row g-3">
+                        <div>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
+                                placeholder="Résumé"></textarea>
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Titre" aria-label="title" name="title">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="collection" aria-label="collectio"
+                                name="collectio">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de couverture</label>
+                            <input class="form-control" type="file" id="formpicture">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 1</label>
+                            <input class="form-control" type="file" id="form_caroussel_1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 2</label>
+                            <input class="form-control" type="file" id="form_caroussel_2">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 3</label>
+                            <input class="form-control" type="file" id="form_caroussel_3">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 4</label>
+                            <input class="form-control" type="file" id="form_caroussel_4">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 1" aria-label="link_1"
+                                name="link_1">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 2" aria-label="link_2"
+                                name="link_2">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 3" aria-label="link_3"
+                                name="link_3">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 4" aria-label="link_4"
+                                name="link_4">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ajouter</button>
+                <button type="button" class="btn btn-danger">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-<div class="container table-responsive-sm mt-2 col-7">
-    <h1 class="text-center display-5 mt-3">Liste boosters</h1>
+<!-- seventh table -->
+<div class="container table-responsive-sm mt-2 col-10">
+    <h1 class="text-center display-5">Table boosters</h1>
+    <div class="d-flex justify-content-end">
+        <a role="button" data-bs-toggle="modal" data-bs-target="#ajout_boosters" class="me-4 mb-3"><i
+                class="bi bi-plus-square"></i></a>
+    </div>
     <table class="table table-hover table-striped">
         <thead class="table-primary">
             <tr>
@@ -137,20 +490,96 @@
                 <th class="col text-secondary">Article</th>
                 <th class="col text-secondary text-center">Date crée</th>
                 <th class="col text-secondary text-center">Edité le</th>
-                <th class="col-1 text-secondary text-center">Action</th>
+                <th class="col text-secondary text-center">Action</th>
             </tr>
-            <tbody>
+        <tbody>
             {{#each booster}}
             {{>admin/tablesboosters data=this}}
             {{/each}}
-            </tbody>
+        </tbody>
         </thead>
     </table>
 </div>
 
+<!-- modal 7 -->
+<div class="modal" tabindex="-1" id="ajout_boosters" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Ajouter</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
 
-<div class="container table-responsive-sm mt-2 col-7">
-    <h1 class="text-center display-5 mt-3">Liste decks</h1>
+                <!-- formulaire -->
+                <form>
+                    <div class="row g-3">
+                        <div>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
+                                placeholder="Résumé"></textarea>
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Titre" aria-label="title" name="title">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="collection" aria-label="collectio"
+                                name="collectio">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de couverture</label>
+                            <input class="form-control" type="file" id="formpicture">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 1</label>
+                            <input class="form-control" type="file" id="form_caroussel_1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 2</label>
+                            <input class="form-control" type="file" id="form_caroussel_2">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 3</label>
+                            <input class="form-control" type="file" id="form_caroussel_3">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 4</label>
+                            <input class="form-control" type="file" id="form_caroussel_4">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 1" aria-label="link_1"
+                                name="link_1">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 2" aria-label="link_2"
+                                name="link_2">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 3" aria-label="link_3"
+                                name="link_3">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 4" aria-label="link_4"
+                                name="link_4">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ajouter</button>
+                <button type="button" class="btn btn-danger">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- eight table -->
+<div class="container table-responsive-sm mt-2 col-10">
+    <h1 class="text-center display-5">Table decks</h1>
+    <div class="d-flex justify-content-end">
+        <a role="button" data-bs-toggle="modal" data-bs-target="#ajout_decks" class="me-4 mb-3"><i
+                class="bi bi-plus-square"></i></a>
+    </div>
     <table class="table table-hover table-striped">
         <thead class="table-primary">
             <tr>
@@ -158,14 +587,85 @@
                 <th class="col text-secondary">Article</th>
                 <th class="col text-secondary text-center">Date crée</th>
                 <th class="col text-secondary text-center">Edité le</th>
-                <th class="col-1 text-secondary text-center">Action</th>
+                <th class="col text-secondary text-center">Action</th>
             </tr>
-            <tbody>
+        <tbody>
             {{#each deck}}
             {{>admin/tablesdecks data=this}}
             {{/each}}
-            </tbody>
+        </tbody>
         </thead>
     </table>
 </div>
 
+<!-- modal 8 -->
+<div class="modal" tabindex="-1" id="ajout_decks" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Ajouter</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <!-- formulaire -->
+                <form>
+                    <div class="row g-3">
+                        <div>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
+                                placeholder="Résumé"></textarea>
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Titre" aria-label="title" name="title">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="collection" aria-label="collectio"
+                                name="collectio">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de couverture</label>
+                            <input class="form-control" type="file" id="formpicture">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 1</label>
+                            <input class="form-control" type="file" id="form_caroussel_1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 2</label>
+                            <input class="form-control" type="file" id="form_caroussel_2">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 3</label>
+                            <input class="form-control" type="file" id="form_caroussel_3">
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Image de caroussel 4</label>
+                            <input class="form-control" type="file" id="form_caroussel_4">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 1" aria-label="link_1"
+                                name="link_1">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 2" aria-label="link_2"
+                                name="link_2">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 3" aria-label="link_3"
+                                name="link_3">
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" placeholder="Lien 4" aria-label="link_4"
+                                name="link_4">
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ajouter</button>
+                <button type="button" class="btn btn-danger">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>

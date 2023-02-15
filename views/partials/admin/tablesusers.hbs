@@ -1,33 +1,16 @@
 <tr>
-    <th>{{this.last_name}}</th>
-    <th>{{this.first_name}}</th>
-    <th>{{this.created_at}}</th>
-    <th>{{this.edited_at}}</th>
-    <th class="text-center"><a role="button" data-bs-toggle="modal" data-bs-target="#Modal1"><i class="bi bi-plus-square"></i></a>
-        <a role="button" data-bs-toggle="modal" data-bs-target="#Modal2"><i class="bi bi-pencil-square"></i></a>
-        <a role="button" data-bs-toggle="modal" data-bs-target="#Modal3"><i class="bi bi-trash3"></i></a>
-    </th>
+  <th>{{this.last_name}}</th>
+  <th>{{this.first_name}}</th>
+  <th>{{this.created_at}}</th>
+  <th>{{this.edited_at}}</th>
+  <th class="text-center">
+    <a role="button" data-bs-toggle="modal" data-bs-target="#Modal_edit_categories"><i class="bi bi-pencil-square"></i></a>
+    <a role="button" data-bs-toggle="modal" data-bs-target="#Modal_delete_categories"><i class="bi bi-trash3"></i></a>
+  </th>
 </tr>
 
-<div class="modal" tabindex="-1" id="Modal1" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Ajouter</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ajouter</button>
-        <button type="button" class="btn btn-danger">Annuler</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal" tabindex="-1" id="Modal2" aria-hidden="true">
+<!-- modal 1 -->
+<div class="modal" tabindex="-1" id="Modal_edit_categories" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -35,17 +18,42 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+
+        <!-- formulaire -->
+        <form>
+          <div class="row g-3">
+            <div>
+              <input type="text" class="form-control" placeholder="Prenom" aria-label="firstname" name="firstname">
+            </div>
+            <div>
+              <input type="text" class="form-control" placeholder="Nom" aria-label="lastname" name="lastname">
+            </div>
+            <div>
+              <input type="text" class="form-control" placeholder="Pseudo" aria-label="pseudo" name="pseudo">
+            </div>
+            <div>
+              <input type="email" class="form-control" placeholder="Email" aria-label="mail" name="email">
+            </div>
+            <div>
+              <input type="password" class="form-control" placeholder="Password" aria-label="password" name="password">
+            </div>
+            <div>
+              <input type="date" class="form-control" placeholder="Date de naissance" aria-label="birthday" name="birthday">
+            </div>
+          </div>
+        </form>
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Modifier</button>
-        <button type="button" class="btn btn-danger">Annuler</button>
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Modifier</button>
+        <button type="submit" class="btn btn-danger">Annuler</button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal" tabindex="-1" id="Modal3" aria-hidden="true">
+<!-- modal 2 -->
+<div class="modal" tabindex="-1" id="Modal_delete_categories" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -53,7 +61,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <p>Souhaitez-vous supprimer l'utilisateur ?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Supprimer</button>

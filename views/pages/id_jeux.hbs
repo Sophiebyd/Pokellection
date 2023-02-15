@@ -16,22 +16,14 @@
         <!-- second content-->
         <div class="container my-5">
             <div class="border">
-                <h4 class="text-center">Notes officielles</h4>
+                <h4 class="text-center">Liens guides</h4>
             </div>
             <div>
                 <ul class="list-group">
-                    <li class="list-group-item"><a
-                            href="{{data.lien_1}}"
-                            class="text-decoration-none">Lien 1</a>
-                    <li class="list-group-item"><a
-                            href="{{data.lien_2}}"
-                            class="text-decoration-none">Lien 2</a>
-                    <li class="list-group-item"><a
-                            href="{{data.lien_3}}"
-                            class="text-decoration-none">Lien 3</a>
-                    <li class="list-group-item"><a
-                            href="{{data.lien-4}}"
-                            class="text-decoration-none">Lien 4</a>
+                    <li class="list-group-item"><a href="{{data.lien_1}}" class="text-decoration-none">Lien 1</a>
+                    <li class="list-group-item"><a href="{{data.lien_2}}" class="text-decoration-none">Lien 2</a>
+                    <li class="list-group-item"><a href="{{data.lien_3}}" class="text-decoration-none">Lien 3</a>
+                    <li class="list-group-item"><a href="{{data.lien-4}}" class="text-decoration-none">Lien 4</a>
                 </ul>
             </div>
         </div>
@@ -39,40 +31,41 @@
 
     <!-- third content -->
     <div class="col-lg-3 col-md-7 mb-5 text-center">
-        <img src="{{data.picture}}"
-            alt="pochettejeu" class="w-75">
+        <img src="{{data.picture}}" alt="pochettejeu" class="w-75">
     </div>
+
     <!-- fourth content-->
     <div class="col-lg-3 col-md-7">
-        <div class="card">
-            <img src="{{data.caroussel}}" alt="pochettejeu"
-                class="w-100">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{data.caroussel}}" alt="pochettejeu" class="w-100 d-block">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{data.caroussel}}" alt="pochettejeu" class="w-100 d-block">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{data.caroussel}}" alt="pochettejeu" class="w-100 d-block">
+                </div>
+            </div>
         </div>
+
+        <!-- fifth content -->
         <div class="border my-5">
-            <!-- fifth content -->
             <div class="border">
                 <h4 class="text-center">Liens guides</h4>
             </div>
             <div class="text-center">
                 <ul class="list-group">
-                    <li class="list-group-item"><a
-                            href="{{data.lien_1}}"
-                            class="text-decoration-none">Lien 1</a>
-                    <li class="list-group-item"><a
-                            href="{{data.lien_2}}"
-                            class="text-decoration-none">Lien 2</a>
-                    <li class="list-group-item"><a
-                            href="{{data.lien_3}}"
-                            class="text-decoration-none">Lien 3</a>
-                    <li class="list-group-item"><a
-                            href="{{data.lien-4}}"
-                            class="text-decoration-none">Lien 4</a>
+                    <li class="list-group-item"><a href="{{data.lien_1}}" class="text-decoration-none">Lien 1</a>
+                    <li class="list-group-item"><a href="{{data.lien_2}}" class="text-decoration-none">Lien 2</a>
+                    <li class="list-group-item"><a href="{{data.lien_3}}" class="text-decoration-none">Lien 3</a>
+                    <li class="list-group-item"><a href="{{data.lien-4}}" class="text-decoration-none">Lien 4</a>
                 </ul>
             </div>
         </div>
     </div>
 </div>
-
 {{! Section Commentaire }}
 <form action="" method="post" class="container-fluid bg-light">
     <div class="d-flex flex-column">

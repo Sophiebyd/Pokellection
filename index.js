@@ -282,7 +282,7 @@ app.get("/mdpoublie", async (req, res) => {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // post // put // delete
 app.get("/profil", async (req, res) => {
-  res.render("pages/profil");
+  res.render("pages/profil", {layout:"user"});
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -305,7 +305,7 @@ app.route("/admin")
     const deck = await db.query("SELECT * FROM articles WHERE titledeck IS NOT NULL");
       //if (process.env.MODE === "test") res.json({ boosters, decks });
       //else 
-        res.render("pages/admin", { booster, deck, user, categorie, jeux, manga, film, serie});
+        res.render("pages/admin", {layout:"admin",booster, deck, user, categorie, jeux, manga, film, serie});
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

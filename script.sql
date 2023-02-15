@@ -52,6 +52,8 @@ CREATE TABLE
       datesorties DATE,
       datefilms DATE,
       parution VARCHAR(250),
+      sortieserie VARCHAR(250),
+      nbeps INT,
       version VARCHAR(50),
       nb INT,
       collection VARCHAR(250),
@@ -139,7 +141,7 @@ VALUES   ('lorem lorem lorem', 'Pokémon Try Adventure', '2010 - 2011', 3,'https
          ('lorem lorem lorem', 'Pocket Monsters Kin Gin: Golden Boys', 'nov 1999 - sep 2001', 10,'https://cdn.myanimelist.net/images/manga/2/25836.jpg',1,2, 'https://i.ytimg.com/vi/JjnlJKwEOLk/maxresdefault.jpg', 'https://www.jeuxvideo.com/jeux/switch/jeu-1537621/', 'https://www.gamekult.com/jeux/pokemon-switch-3050876089.html',  'NULL', 'NULL'),	
          ('lorem lorem lorem', 'Pocket Monsters XY-hen', '29 juin 2013 - 30 aout 2016', 10,'https://cdn.myanimelist.net/images/manga/2/142851.jpg',1,2, 'https://i.ytimg.com/vi/JjnlJKwEOLk/maxresdefault.jpg', 'https://www.jeuxvideo.com/jeux/switch/jeu-1537621/', 'https://www.gamekult.com/jeux/pokemon-switch-3050876089.html', 'NULL', 'NULL');	
 
-INSERT INTO articles (text, titleseries, parution, nb, picture, Id_users, Id_categories, caroussel, lien_1, lien_2, lien_3, lien_4)
+INSERT INTO articles (text, titleseries, sortieserie, nbeps, picture, Id_users, Id_categories, caroussel, lien_1, lien_2, lien_3, lien_4)
 VALUES   ('lorem lorem lorem', 'Pokémon', '1 avr 1997 - 14 nov 2022', 276,'https://cdn.myanimelist.net/images/anime/13/73834.jpg',1,3, 'https://i.ytimg.com/vi/JjnlJKwEOLk/maxresdefault.jpg', 'https://www.jeuxvideo.com/1537621/', 'https://www.gamekult.com/jeux/pokemon-switch-3050876089.html', 'NULL', 'NULL'),	
          ('lorem lorem lorem', 'Pokemon XY & Z', '22 mai 1999 - sep 2001', 47,'https://cdn.myanimelist.net/images/anime/1599/94412.jpg',1,3, 'https://i.ytimg.com/vi/JjnlJKwEOLk/maxresdefault.jpg', 'https://www.jeuxvideo.com/jeux/switch/jeu-1537621/', 'https://www.gamekult.com/jeux/pokemon-switch-3050876089.html', 'NULL', 'NULL'), 	
          ('lorem lorem lorem', 'Pokémon Advanced Generation', '21 nov 2002 - 14 sep 2006', 192,'https://cdn.myanimelist.net/images/anime/1759/97378.jpg',1,3, 'https://i.ytimg.com/vi/JjnlJKwEOLk/maxresdefault.jpg', 'https://www.jeuxvideo.com/jeux/switch/jeu-1537621/', 'https://www.gamekult.com/jeux/pokemon-switch-3050876089.html', 'NULL', 'NULL'), 	
