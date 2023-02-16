@@ -3,7 +3,7 @@
 
 ## **Install & module**
 
-[NPM](https://www.npmjs.com/)
+[lien vers NPM](https://www.npmjs.com/)
 
 **Install**
 - `npm start`
@@ -21,6 +21,7 @@
 - method-override `npm install method-override`
 - chai `npm install chai`
 - handlebars `npm install handlebars`
+- Multer `npm install multer`
 
 **Read with modules**
 - `npm run dev`
@@ -45,13 +46,17 @@
 ## **DOC**
 - [W3school](https://www.w3schools.com/)
 - [MDN](https://developer.mozilla.org/fr/)
-- [Express](https://expressjs.com/)
 - [Node.js V16.19.0](https://nodejs.org/docs/latest-v16.x/api/)
 - [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 - [Sass](https://sass-lang.com/documentation/)
-- [Handlebars](https://handlebarsjs.com/guide/#what-is-handlebars)
 - [Postman](https://learning.postman.com/docs/getting-started/introduction/)
+
+**NPM**
+- [Express](https://expressjs.com/)
+- [Handlebars](https://handlebarsjs.com/guide/#what-is-handlebars)
 - [Moment](https://momentjs.com/)
+- [Multer](https://www.npmjs.com/package/multer)
+
 
 **Some powershell command**
 - `cd -yourway-` navigate in your files
