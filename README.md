@@ -20,7 +20,7 @@
 - mocha `npm install mocha`
 - method-override `npm install method-override`
 - chai `npm install chai`
-- handlebars `npm install handlebars`
+- express-handlebars `npm install express-handlebars`
 - Multer `npm install multer`
 
 **Read with modules**

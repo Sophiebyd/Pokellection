@@ -19,22 +19,22 @@
       <div class="modal-body">
 
         <!-- formulaire -->
-        <form  id="categorieForm" action="/admin?_method=PUT" method="post" enctype="multipart/form-data">
+        <form>
           <div class="row g-3">
             <div>
               <input type="text" class="form-control" placeholder="Nom" aria-label="name" name="name">
             </div>
             <div class="mb-3">
               <label for="formFile" class="form-label">Image de couverture</label>
-              <input class="form-control" type="file" id="formFile" name="edit_image">
+              <input class="form-control" type="file" id="formFile">
             </div>
           </div>
-        </form>
-
-      </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Modifier</button>
         <button type="button" class="btn btn-danger">Annuler</button>
+      </div>
+        </form>
+
       </div>
     </div>
   </div>

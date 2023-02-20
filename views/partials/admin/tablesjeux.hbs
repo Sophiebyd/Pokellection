@@ -20,7 +20,7 @@
       <div class="modal-body">
 
         <!-- formulaire -->
-        <form>
+        <form id="categorieForm" action="/admin?_method=PUT" method="post" enctype="multipart/form-data">
           <div class="row g-3">
             <div>
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Résumé"></textarea>
@@ -37,7 +37,7 @@
             </div>
             <div class="mb-3">
               <label for="formFile" class="form-label">Image de couverture</label>
-              <input class="form-control" type="file" id="formpicture">
+              <input class="form-control" type="file" id="formpicture" name="edit_image">
             </div>
             <div class="mb-3">
               <label for="formFile" class="form-label">Image de caroussel 1</label>
@@ -72,7 +72,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Modifier</button>
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Modifier</button>
         <button type="button" class="btn btn-danger">Annuler</button>
       </div>
     </div>

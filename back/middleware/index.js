@@ -1,4 +1,8 @@
 module.exports = {
+  test : (req, res, next) => {
+    console.log('je suis le middleware') 
+    next ()
+  },
     isAdmin: async (req, res, next) => {
       if(!req.session.user) return res.redirect('/')
       const [user] = await db.query(`SELECT first_name, last_name FROM users WHERE email="${req.session.user.email}"`);
