@@ -1,6 +1,9 @@
 const express = require("express"),
   router = express.Router();
 
+const upload = require("./config/other/multer");
+
+
 // import controller
 const {getHomePage, getContact, postContactMail, getConnexion, getCreateAccount, getForgotPassword, getProfil, get404} = require("./controller/home_controller");
 const {getJeuxVideosPage, getCartesPage, getAnimesPage, getSeriesArticle, getFilmsArticle, getMangasArticle, getBoostersArticle, getDecksArticle, getJeuxVideosArticle, getMangas} = require("./controller/articles_controller");
@@ -13,81 +16,81 @@ router.route("/")
 
 // Contact
 router.route("/contact")
-.get(test, getContact)
-.post(test, postContactMail);
+.get(getContact)
+.post(postContactMail);
 
 // jeux vidéo liste pages
 router.route("/jeuxvideos")
-.get(test, getJeuxVideosPage);
+.get(getJeuxVideosPage);
 
 // cartes liste pages
 router.route("/cartes")
-.get(test, getCartesPage);
+.get(getCartesPage);
 
 // connexion 
 router.route("/connexion")
-.get(test, getConnexion);
+.get(getConnexion);
 
 // création de compte 
 router.route("/creation")
-.get(test, getCreateAccount);
+.get(getCreateAccount);
 
 // animes liste pages
 router.route("/animes")
-.get(test, getAnimesPage);
+.get(getAnimesPage);
 
 // series article (par id)
 router.route("/series/:id")
-.get(test, getSeriesArticle);
+.get(getSeriesArticle);
 
 // films article (par id)
 router.route("/films/:id")
-.get(test, getFilmsArticle);
+.get(getFilmsArticle);
 
 // mangas article (par id)
-router.route("/mangas/id")
-.get(test, getMangasArticle);
+router.route("/mangas/:id")
+.get(getMangasArticle);
 
 // boosters article (par id)
 router.route("/boosters/:id")
-.get(test, getBoostersArticle);
+.get(getBoostersArticle);
 
 // decks article (par id)
 router.route("/decks/:id")
-.get(test, getDecksArticle);
+.get(getDecksArticle);
 
 // jeux vidéos article (par id)
 router.route("/jeux/:id")
-.get(test, getJeuxVideosArticle);
+.get(getJeuxVideosArticle);
 
 // mangas liste pages
 router.route("/mangas")
-.get(test, getMangas);
+.get(getMangas);
 
 // page mdp oublié 
 router.route("/mdpoublie")
-.get(test, getForgotPassword);
+.get(getForgotPassword);
 
 // page profil
 router.route("/profil")
-.get(test, getProfil);
+.get(getProfil);
   
 // page 404
 router.route("/404")
-.get(test, get404);
+.get(get404);
 
 // page Admin
 router.route("/admin")
-  .get(test, getAdmin)
+  .get(getAdmin)
 
 // POST article
-  .post(test, postAdmin)
+  .post(postAdmin)
 
   // UPDATE ARTICLE
-  .put(test, putAdmin )
+  .put(upload.single("edit_image"), putAdmin)
 
   // DELETE ARTICLE
-  .delete(test, deleteAdmin);
+  .delete(deleteAdmin);
 
 // Exports de notre router
 module.exports = router;

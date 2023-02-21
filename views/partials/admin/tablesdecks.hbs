@@ -1,6 +1,7 @@
 <tr>
   <th col-1 text-secondary text-center>{{this.titledeck}}</th>
-  <th col-1 text-secondary text-center><a href="/decks/{{this.Id_articles}}" class="text-decoration-none">{{this.Id_articles}}</a></th>
+  <th col-1 text-secondary text-center><a href="/decks/{{this.Id_articles}}"
+      class="text-decoration-none">{{this.Id_articles}}</a></th>
   <th col-1 text-secondary text-center>{{formatDate this.created_at "DD-MM-YYYY"}}</th>
   <th col-1 text-secondary text-center>{{formatDate this.edited_at "DD-MM-YYYY"}}</th>
   <th class="text-center">
@@ -9,6 +10,7 @@
   </th>
 </tr>
 
+<!-- modal 1 -->
 <div class="modal" tabindex="-1" id="Modal_edit_deck" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -18,36 +20,38 @@
       </div>
       <div class="modal-body">
         <!-- formulaire -->
-        <form>
+        <form id="decksForm" action="/admin?_method=PUT" method="post" enctype="multipart/form-data">
           <div class="row g-3">
             <div>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Résumé"></textarea>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Résumé"
+                name="text"></textarea>
             </div>
             <div>
               <input type="text" class="form-control" placeholder="Titre" aria-label="title" name="title">
             </div>
             <div>
-              <input type="text" class="form-control" placeholder="collection" aria-label="collectio" name="collectio">
+              <input type="text" class="form-control" placeholder="collection" aria-label="collection"
+                name="collection">
             </div>
             <div class="mb-3">
               <label for="formFile" class="form-label">Image de couverture</label>
-              <input class="form-control" type="file" id="formpicture">
+              <input class="form-control" type="file" id="formpicture" name="edit_image">
             </div>
             <div class="mb-3">
               <label for="formFile" class="form-label">Image de caroussel 1</label>
-              <input class="form-control" type="file" id="form_caroussel_1">
+              <input class="form-control" type="file" id="form_caroussel_1" name="caroussel_1">
             </div>
             <div class="mb-3">
               <label for="formFile" class="form-label">Image de caroussel 2</label>
-              <input class="form-control" type="file" id="form_caroussel_2">
+              <input class="form-control" type="file" id="form_caroussel_2" name="caroussel_2">
             </div>
             <div class="mb-3">
               <label for="formFile" class="form-label">Image de caroussel 3</label>
-              <input class="form-control" type="file" id="form_caroussel_3">
+              <input class="form-control" type="file" id="form_caroussel_3" name="caroussel_3">
             </div>
             <div class="mb-3">
               <label for="formFile" class="form-label">Image de caroussel 4</label>
-              <input class="form-control" type="file" id="form_caroussel_4">
+              <input class="form-control" type="file" id="form_caroussel_4" name="caroussel_4">
             </div>
             <div>
               <input type="text" class="form-control" placeholder="Lien 1" aria-label="link_1" name="link_1">
@@ -62,16 +66,17 @@
               <input type="text" class="form-control" placeholder="Lien 4" aria-label="link_4" name="link_4">
             </div>
           </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Modifier</button>
+            <button type="button" class="btn btn-danger">Annuler</button>
+          </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Modifier</button>
-        <button type="button" class="btn btn-danger">Annuler</button>
       </div>
     </div>
   </div>
 </div>
 
+<!-- modal 2 -->
 <div class="modal" tabindex="-1" id="Modal_delete_deck" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -83,7 +88,7 @@
         <p>Souhaitez-vous supprimer l'article de ce deck ?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Supprimer</button>
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Supprimer</button>
         <button type="button" class="btn btn-danger">Annuler</button>
       </div>
     </div>

@@ -10,8 +10,7 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 const { mailSend } = require("./back/utils/nodeMailer");
 const upload = require("./back/config/other/multer");
-const path = require("path");
-const fs = require("fs");
+
 
 /* création d'un serveur
 http

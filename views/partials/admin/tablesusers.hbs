@@ -21,7 +21,7 @@
       <div class="modal-body">
 
         <!-- formulaire -->
-        <form>
+        <form id="usersForm" action="/admin?_method=PUT" method="post" enctype="multipart/form-data">
           <div class="row g-3">
             <div>
               <input type="text" class="form-control" placeholder="Prenom" aria-label="firstname" name="firstname">
@@ -43,12 +43,11 @@
                 name="birthday">
             </div>
           </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Modifier</button>
+            <button type="button" class="btn btn-danger">Annuler</button>
+          </div>
         </form>
-
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Modifier</button>
-        <button type="submit" class="btn btn-danger">Annuler</button>
       </div>
     </div>
   </div>
@@ -66,7 +65,7 @@
         <p>Souhaitez-vous supprimer l'utilisateur ?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Supprimer</button>
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Supprimer</button>
         <button type="button" class="btn btn-danger">Annuler</button>
       </div>
     </div>

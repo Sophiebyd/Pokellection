@@ -5,14 +5,15 @@ const multer = require("multer");
 const storage = multer.diskStorage({
   // Ici la destination (ou seront stocker nos fichiers par default)
   destination: (req, file, cb) => {
-    cb(null, "./");
+    console.log(file);
+    cb(null, "./public/img");
   },
   // Ici est définit le format du nom de l'image à stocker
   filename: (req, file, cb) => {
     const nameFile = file.originalname;
     const splited = nameFile.split(".");
     const ext = splited[splited.length - 1];
-    const completed = "public/img/" + Date.now() + "." + ext;
+    const completed = splited[0] + "-" + Date.now() + "." + ext;
 
     file.completed = completed;
 

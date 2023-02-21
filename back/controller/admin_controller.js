@@ -1,4 +1,6 @@
-const upload = require("../config/other/multer");
+// import modules
+const path = require('path');
+const fs = require("fs");
 
 // GET Admin
 exports.getAdmin = async (req, res) => {
@@ -76,7 +78,7 @@ exports.postAdmin = (req, res) => {
 };
 
 //PUT admin (update)
-exports.putAdmin = upload.single("edit_image"),
+exports.putAdmin = 
   (req, res) => {
     const {
       text,
@@ -102,6 +104,7 @@ exports.putAdmin = upload.single("edit_image"),
       lien_4,
     } = req.body; 
     const { id } = req.params;
+    console.log("putAdmin");
     if (
       text ||
       titlejeux ||
@@ -135,8 +138,9 @@ exports.putAdmin = upload.single("edit_image"),
         }
       );
     } else if (req.file) {
+      const {id} = db.query ('SELECT Id_articles from articles')
       db.query(
-        `SELECT picture from articles WHERE Id_articles=4`,
+        `SELECT picture from articles WHERE Id_articles=${id}`,
         function (err, data) {
           console.log("data", data);
           if (data[0].picture !== "default.png") {
@@ -147,12 +151,13 @@ exports.putAdmin = upload.single("edit_image"),
             });
           }
           db.query(
-            `UPDATE articles SET picture ="${req.file.completed}" WHERE Id_articles=4`,
+            `UPDATE articles SET picture ="${req.file.completed}" WHERE Id_articles=${id}`,
             function (err, data) {
               if (err) throw err;
               //if (process.env.MODE === "test") res.json(data);
               // Redirection vers la page Admin
               else res.redirect("back");
+              console.log("data", data);
             }
           );
         }

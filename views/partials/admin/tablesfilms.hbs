@@ -1,6 +1,7 @@
 <tr>
   <th>{{this.titlefilms}}</th>
-  <th class="text-center"><a href="/films/{{this.Id_articles}}" class="text-decoration-none">{{this.Id_articles}}</a></th>
+  <th class="text-center"><a href="/films/{{this.Id_articles}}" class="text-decoration-none">{{this.Id_articles}}</a>
+  </th>
   <th class="text-center">{{formatDate this.created_at "DD-MM-YYYY"}}</th>
   <th class="text-center">{{formatDate this.edited_at "DD-MM-YYYY"}}</th>
   <th class="text-center">
@@ -9,6 +10,7 @@
   </th>
 </tr>
 
+<!-- modal 1 -->
 <div class="modal" tabindex="-1" id="Modal_edit_films" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -19,10 +21,11 @@
       <div class="modal-body">
 
         <!-- formulaire -->
-        <form>
+        <form id="filmsForm" action="/admin?_method=PUT" method="post" enctype="multipart/form-data">
           <div class="row g-3">
             <div>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Résumé"></textarea>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Résumé"
+                name="text"></textarea>
             </div>
             <div>
               <input type="text" class="form-control" placeholder="Titre" aria-label="title" name="title">
@@ -64,17 +67,17 @@
               <input type="text" class="form-control" placeholder="Lien 4" aria-label="link_4" name="link_4">
             </div>
           </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Modifier</button>
+            <button type="button" class="btn btn-danger">Annuler</button>
+          </div>
         </form>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Modifier</button>
-        <button type="button" class="btn btn-danger">Annuler</button>
       </div>
     </div>
   </div>
 </div>
 
+<!-- modal 2 -->
 <div class="modal" tabindex="-1" id="Modal_delete_films" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -86,7 +89,7 @@
         <p>Souhaitez-vous supprimer l'article de ce film ?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Supprimer</button>
+        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Supprimer</button>
         <button type="button" class="btn btn-danger">Annuler</button>
       </div>
     </div>

@@ -1,6 +1,7 @@
 <tr>
   <th>{{this.titlejeux}}</th>
-  <th class="text-center"><a href="/jeux/{{this.Id_articles}}" class="text-decoration-none">{{this.Id_articles}}</a></th>
+  <th class="text-center"><a href="/jeux/{{this.Id_articles}}" class="text-decoration-none">{{this.Id_articles}}</a>
+  </th>
   <th class="text-center">{{formatDate this.created_at "DD-MM-YYYY"}}</th>
   <th class="text-center">{{formatDate this.edited_at "DD-MM-YYYY"}}</th>
   <th class="text-center">
@@ -20,7 +21,7 @@
       <div class="modal-body">
 
         <!-- formulaire -->
-        <form id="categorieForm" action="/admin?_method=PUT" method="post" enctype="multipart/form-data">
+        <form id="jeuxForm" action="/admin?_method=PUT" method="post" enctype="multipart/form-data">
           <div class="row g-3">
             <div>
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Résumé"></textarea>
@@ -68,12 +69,11 @@
               <input type="text" class="form-control" placeholder="Lien 4" aria-label="link_4" name="link_4">
             </div>
           </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Modifier</button>
+            <button type="button" class="btn btn-danger">Annuler</button>
+          </div>
         </form>
-
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Modifier</button>
-        <button type="button" class="btn btn-danger">Annuler</button>
       </div>
     </div>
   </div>

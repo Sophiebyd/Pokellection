@@ -63,3 +63,29 @@ describe("CHAI // CONTROLLER // JEUX VIDEOS", () => {
       });
   });
 });
+
+// Description de notre test
+describe("CHAI // CONTROLLER // MANGAS PAR ID", () => {
+  // On définit des variables à utiliser plus tard
+  let id;
+
+  // Test Route GET Articles
+  it(" ChaiRouter // GET // Mangas par Id", (done) => {
+    // Nous appelons chai avec .request(app) afin de venir cherher les routes de notre application
+    chai
+      .request(app)
+      // Ensuite nous stipulons la route
+      .get("/mangas/id")
+      // Et enfin nous allons pouvoir checker le format de notre réponse
+      .end((err, res) => {
+        if (err) return done(err);
+        console.log("get mangas", res.body);
+        // Ici on demande à ce que res.body.articles doit être un 'array'
+        res.body.should.be.a("array");
+        // Ici on demande à ce que res soit un status 200
+        res.should.have.status(200);
+        // Et le done() permet de cloturer notre test
+        done();
+      });
+  });
+});
