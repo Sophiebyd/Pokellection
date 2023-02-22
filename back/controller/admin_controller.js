@@ -138,13 +138,15 @@ exports.putAdmin =
         }
       );
     } else if (req.file) {
-      const {id} = db.query ('SELECT Id_articles from articles')
+      const {id} = req.params
+      console.log('id', id)
+      console.log('req.url', req.url);
       db.query(
         `SELECT picture from articles WHERE Id_articles=${id}`,
-        function (err, data) {
+        function (err, [data]) {
           console.log("data", data);
-          if (data[0].picture !== "default.png") {
-            pathImg = path.resolve("public/img/" + data[0].picture);
+          if (data.picture !== "default.png") {
+            pathImg = path.resolve("public/img/" + data.picture);
             fs.unlink(pathImg, (err) => {
               if (err) throw err;
               console.log(req.file);

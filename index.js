@@ -10,6 +10,8 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 const { mailSend } = require("./back/utils/nodeMailer");
 const upload = require("./back/config/other/multer");
+const expressSession = require("express-session");
+const MySQLStore = require("express-mysql-session")(expressSession);
 
 
 /* création d'un serveur
@@ -89,6 +91,18 @@ app.set("views", "./views");
 
 const router = require ('./back/router')
 app.use (router)
+
+// Configuration Express-Session
+const sessionStore = new MySQLStore(configDB);
+app.use(
+  expressSession({
+    secret: "securite",
+    name: "poti-gato",
+    saveUninitialized: true,
+    resave: false,
+    store: sessionStore
+  })
+);
 
 // On demarre notre app en lui demandant d'être à l'écoute du port
 app.listen(PORT_NODE, () => console.log(`on port ${PORT_NODE}`));

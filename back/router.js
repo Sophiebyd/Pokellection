@@ -5,14 +5,17 @@ const upload = require("./config/other/multer");
 
 
 // import controller
-const {getHomePage, getContact, postContactMail, getConnexion, getCreateAccount, getForgotPassword, getProfil, get404} = require("./controller/home_controller");
+const {getHomePage, getContact, postContactMail, getConnexion, postCreateAccount, getCreateAccount, getForgotPassword, getProfil, postLogout, get404, postConnexion} = require("./controller/home_controller");
 const {getJeuxVideosPage, getCartesPage, getAnimesPage, getSeriesArticle, getFilmsArticle, getMangasArticle, getBoostersArticle, getDecksArticle, getJeuxVideosArticle, getMangas} = require("./controller/articles_controller");
 const {getAdmin, postAdmin, putAdmin, deleteAdmin} = require("./controller/admin_controller");
 const { test } = require("./middleware");
 
 // Home page
 router.route("/")
-.get(test, getHomePage);
+.get(test, getHomePage)
+
+// POST logout
+.post(postLogout);
 
 // Contact
 router.route("/contact")
@@ -29,15 +32,18 @@ router.route("/cartes")
 
 // connexion 
 router.route("/connexion")
-.get(getConnexion);
+.get(getConnexion)
+.post(postConnexion);
 
 // création de compte 
 router.route("/creation")
-.get(getCreateAccount);
+.get(getCreateAccount)
+.post(postCreateAccount);
 
 // animes liste pages
 router.route("/animes")
 .get(getAnimesPage);
+
 
 // series article (par id)
 router.route("/series/:id")
@@ -74,7 +80,7 @@ router.route("/mdpoublie")
 // page profil
 router.route("/profil")
 .get(getProfil);
-  
+
 // page 404
 router.route("/404")
 .get(get404);
@@ -83,14 +89,17 @@ router.route("/404")
 router.route("/admin")
   .get(getAdmin)
 
-// POST article
+  // POST article
   .post(postAdmin)
-
-  // UPDATE ARTICLE
-  .put(upload.single("edit_image"), putAdmin)
-
+  
   // DELETE ARTICLE
   .delete(deleteAdmin);
+
+// admin with params url (id)
+router.route("/admin/:id")
+// UPDATE ARTICLE
+.put(upload.single("edit_image"), putAdmin)
+
 
 // Exports de notre router
 module.exports = router;

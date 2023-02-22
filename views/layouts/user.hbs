@@ -25,7 +25,7 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a role="button" href="/" class="nav-link text-white">Déconnexion</a>
+            <a role="button" class="nav-link text-white" data-bs-toggle="modal" data-bs-target="#Modal_deconnexion">Déconnexion</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="/jeuxvideos">Jeux
@@ -49,19 +49,19 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="Modal_deconnexion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalLabel">Déconnexion</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
+          <form class="modal-body"  id="logoutForm" action="/logout" method="post">
             <p>Souhaitez-vous déconnecter ?</p>
-          </div>
+          </form>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">oui</button>
-            <button type="button" class="btn btn-danger">non</button>
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Oui</button>
+            <button type="button" class="btn btn-danger">Non</button>
           </div>
         </div>
       </div>
