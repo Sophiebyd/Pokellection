@@ -89,9 +89,6 @@ app.engine(
 app.set("view engine", "hbs");
 app.set("views", "./views");
 
-const router = require ('./back/router')
-app.use (router)
-
 // Configuration Express-Session
 const sessionStore = new MySQLStore(configDB);
 app.use(
@@ -103,6 +100,18 @@ app.use(
     store: sessionStore
   })
 );
+
+app.use((req, res, next) => {
+  console.log('req session', req.session);
+  if (req.session.user)
+    res.locals.user = req.session.user
+  next()
+})
+
+const router = require ('./back/router')
+app.use (router)
+
+
 
 // On demarre notre app en lui demandant d'être à l'écoute du port
 app.listen(PORT_NODE, () => console.log(`on port ${PORT_NODE}`));

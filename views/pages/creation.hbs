@@ -1,17 +1,17 @@
-<form action="submit" class="container my-5">
+<form action="/creation" method="post" class="container my-5">
     <div class="row justify-content-center my-2 mb-5">
         <h1 class="text-center mb-5">Inscription</h1>
         <div class="col-md-4 mt-2 col-sm-7">
-            <input type="text" class="form-control" placeholder="Nom" aria-label="first name">
+            <input type="text" class="form-control" placeholder="Nom" aria-label="first name" name="lastname">
         </div>
         <div class="col-md-4 mt-2 col-sm-7">
-            <input type="text" class="form-control" placeholder="Prénom" aria-label="last name">
+            <input type="text" class="form-control" placeholder="Prénom" aria-label="last name" name="firstname">
         </div>
         <div class="col-md-4 mt-2 col-sm-7">
-            <input type="text" class="form-control" placeholder="Choisir un pseudo" aria-label="nickname">
+            <input type="text" class="form-control" placeholder="Choisir un pseudo" aria-label="nickname" name="pseudo">
         </div>
         <div class="col-md-6 mt-2 col-sm-7">
-            <input type="password" class="form-control" placeholder="Mot de passe" aria-label="password">
+            <input type="password" class="form-control" placeholder="Mot de passe" aria-label="password" name="password">
             <div id="passwordHelpBlock" class="form-text">
                 <ul>
                     <li>Un chiffre obligatoire</li>
@@ -22,13 +22,13 @@
         </div>
         <div class="col-md-6 mt-2 col-sm-7">
             <input type="password" class="form-control" placeholder="Confirmez mot de passe"
-                aria-label="confirm_password">
+                aria-label="confirm_password" name="confirm_password">
         </div>
         <div class="col-md-6 mt-2 col-sm-7">
-            <input type="email" class="form-control" placeholder="Email" aria-label="email">
+            <input type="email" class="form-control" placeholder="Email" aria-label="email" name="email">
         </div>
         <div class="col-md-6 mt-2 col-sm-7">
-            <input type="date" class="form-control" placeholder="Date de naissance" aria-label="birthday">
+            <input type="date" class="form-control" placeholder="Date de naissance" aria-label="birthday" name="birthday">
         </div>
     </div>
     <div class="container-fluid text-center">

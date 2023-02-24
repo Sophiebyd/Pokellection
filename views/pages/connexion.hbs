@@ -1,16 +1,16 @@
 <!-- content -->
-<form action="submit" class="container my-5">
+<form action="/connexion" method="post" class="container my-5">
     <div class="row justify-content-center my-2 mb-5">
         <h1 class="text-center mb-5">Connexion</h1>
         <div class="col-md-3 mt-2 col-sm-5">
-            <input type="text" class="form-control " placeholder="Pseudo" aria-label="first_name">
+            <input type="text" class="form-control " placeholder="Pseudo" aria-label="pseudo" name="pseudo">
         </div>
         <div class="col-md-3 mt-2 col-sm-5">
-            <input type="password" class="form-control " placeholder="Mot de passe" aria-label="last_name">
+            <input type="password" class="form-control " placeholder="Mot de passe" aria-label="password" name="password">
         </div>
     </div>
     <div class="container text-center">
-        <button type="button" class="btn btn-primary">Connexion</button>
+        <button type="submit" class="btn btn-primary">Connexion</button>
         <div class="container-fluid text-end m-3">
             <a href="/mdpoublie" class="text-decoration-none m-2">Mot de passe oublié</a>
             <a href="/creation" class="text-decoration-none m-2">Créer un compte</a>

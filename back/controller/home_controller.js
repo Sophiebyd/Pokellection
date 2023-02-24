@@ -44,6 +44,7 @@ exports.getConnexion = (req, res) => {
 exports.postConnexion =('/connexion', (req, res) => {
   // Récupération du formulaire de connexion
   const { pseudo, password } = req.body
+  console.log(req.body);
 
   // On va chercher dans la db si le mail existe
   db.query(`SELECT * FROM users WHERE pseudo="${pseudo}"`, function (err, data) {
@@ -51,29 +52,24 @@ exports.postConnexion =('/connexion', (req, res) => {
 
     // On stock notre resultat[0] qui sera notre user ayant le mail correspondant
     let user = data[0]
+    console.log('user data', user);
     // Si l'on a aucun user ayant ce mail
-    if (!user) return res.render('connexion', { flash: "Ce compte n'existe pas" })
+    if (!user) return res.render('pages/connexion', { flash: "Ce compte n'existe pas" })
 
     // On viens comparer notre password du formulaire avec le hash de l'user correspondant au mail dans la db
     // la function compare hash le password pour le comparer avec le hash passer en parametre (user.password)
     bcrypt.compare(password, user.password, function (err, result) {
       // Si le mot de passe ne correspond pas
-      if (!result) return res.render('connexion', { flash: "L\'email ou le mot de passe n\'est pas correct !" })
+      if (!result) return res.render('/connexion', { flash: "L\'email ou le mot de passe n\'est pas correct !" })
       else {
         // On assigne les data voulu dans la session
         req.session.user = {
-          id: user.id,
-          email: user.email,
-          name: user.name,
-          account_create: user.create_time,
-          isAdmin: user.isAdmin
+          pseudo: user.pseudo
         };
-        console.log('req.session.user', req.session.user);
         res.redirect('/')
       }
     });
   })
-
 })
 
 //GET création de compte
@@ -82,19 +78,17 @@ exports.getCreateAccount = (req, res) => {
 };
 
 // POST création de compte
-exports.postCreateAccount =
-  ("/creation",
-  (req, res) => {
+exports.postCreateAccount = ("/creation", (req, res) => {
     // Récupération du formulaire de création de compte
-    const { firstname, lastname, email, password, pseudo, birthday } = req.body;
+    const { firstname, lastname, email, password, confirm_password, pseudo, birthday } = req.body;
+    console.log('req body creation', req.body)
 
     // Ici l'on pourrais checker en back si le password est égale au passwordConfirm
-    //if(password !== confirm_password) return res.redirect('/')
+    if(password !== confirm_password) return res.redirect('/creation')
 
     // On check si l'on a bien les informations que l'on a besoin
     if (!firstname || !lastname || !email || !password || !pseudo || !birthday)
-      return res.redirect("/");
-
+    return res.redirect("/");
     // On hash notre password avant de l'enregistrer dans la DB
     bcrypt.hash(password, bcrypt_salt, function (err, hash) {
       // Notre requête SQL pour enregistrer notre user dans la DB
@@ -103,7 +97,6 @@ exports.postCreateAccount =
         function (err, data) {
           if (err) throw err;
           res.redirect("/connexion");
-          console.log('date creation', data);
         }
       );
     });
@@ -127,7 +120,6 @@ exports.postLogout = ('/logout', (req, res) => {
     res.clearCookie('poti-gato');
     // Le petit log pour informé dans la console
     console.log("Clear Cookie session :", req.sessionID);
-
     res.redirect('/');
   })
 });
