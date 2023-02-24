@@ -104,7 +104,7 @@ exports.putAdmin =
       lien_4,
     } = req.body; 
     const { id } = req.params;
-    console.log("putAdmin");
+    console.log("putAdmin", req.body);
     if (
       text ||
       titlejeux ||
@@ -129,7 +129,7 @@ exports.putAdmin =
       lien_4
     ) {
       db.query(
-        `UPDATE articles SET text='${text}', titlejeux='${titlejeux}', titlemangas='${titlemangas}', titleseries='${titleseries}', titlefilms='${titlefilms}', titlebooster='${titlebooster}', titledeck='${titledeck}', datesorties= DATE ${datesorties}, datefilms = DATE ${datefilms},  parution ='${parution}', sortieserie ='${sortieserie}', nbeps = ${nbeps}, version ='${version}', nb = ${nb}, collection = ${collection}, picture = ${picture}, caroussel = ${caroussel}, lien_1 = ${lien_1}, lien_3 = ${lien_3}, lien_2 = ${lien_2}, lien_4 = ${lien_4}    WHERE id_article = ${id};`,
+        `UPDATE articles SET text='${text}', titlejeux='${titlejeux}', titlemangas='${titlemangas}', titleseries='${titleseries}', titlefilms='${titlefilms}', titlebooster='${titlebooster}', titledeck='${titledeck}', datesorties= DATE ${datesorties}, datefilms = DATE ${datefilms},  parution ='${parution}', sortieserie ='${sortieserie}', nbeps = ${nbeps}, version ='${version}', nb = ${nb}, collection = ${collection}, picture = ${picture}, caroussel = ${caroussel}, lien_1 = ${lien_1}, lien_3 = ${lien_3}, lien_2 = ${lien_2}, lien_4 = ${lien_4}    WHERE Id_article = ${id}`,
         function (err, data) {
           if (err) throw err;
           //if (process.env.MODE === "test") res.json(data);

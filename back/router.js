@@ -5,7 +5,7 @@ const upload = require("./config/other/multer");
 
 
 // import controller
-const {getHomePage, getContact, postContactMail, getConnexion, postCreateAccount, getCreateAccount, getForgotPassword, getProfil, postLogout, get404, postConnexion} = require("./controller/home_controller");
+const {getHomePage, putHomePage, deleteCategories, getContact, postContactMail, getConnexion, postCreateAccount, getCreateAccount, getForgotPassword, getProfil, postLogout, get404, postConnexion} = require("./controller/home_controller");
 const {getJeuxVideosPage, getCartesPage, getAnimesPage, getSeriesArticle, getFilmsArticle, getMangasArticle, getBoostersArticle, getDecksArticle, getJeuxVideosArticle, getMangas} = require("./controller/articles_controller");
 const {getAdmin, postAdmin, putAdmin, deleteAdmin} = require("./controller/admin_controller");
 const { test } = require("./middleware");
@@ -13,7 +13,8 @@ const { test } = require("./middleware");
 // Home page
 router.route("/")
 .get(test, getHomePage)
-
+.put(putHomePage)
+.delete(deleteCategories)
 // POST logout
 .post(postLogout);
 

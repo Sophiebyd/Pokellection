@@ -22,17 +22,17 @@
         <form id="categoriesForm" action="/admin?_method=PUT" method="post" enctype="multipart/form-data">
           <div class="row g-3">
             <div>
-              <input type="text" class="form-control" placeholder="Nom" aria-label="name" name="name">
+              <input type="text" class="form-control" placeholder="Nom" aria-label="name" name="name_categories">
             </div>
             <div class="mb-3">
               <label for="formFile" class="form-label">Image de couverture</label>
               <input class="form-control" type="file" id="formFile" name="edit_image">
             </div>
           </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Modifier</button>
-        <button type="button" class="btn btn-danger">Annuler</button>
-      </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Modifier</button>
+            <button type="button" class="btn btn-danger">Annuler</button>
+          </div>
         </form>
       </div>
     </div>
@@ -47,13 +47,13 @@
         <h5 class="modal-title">Supprimer</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <form class="modal-body" action="/admin?_method=DELETE" method="post">
         <p>Souhaitez-vous supprimer la catégorie ?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Supprimer</button>
-        <button type="button" class="btn btn-danger">Annuler</button>
-      </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Supprimer</button>
+          <button type="button" class="btn btn-danger">Annuler</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

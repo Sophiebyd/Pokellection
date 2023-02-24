@@ -2,7 +2,7 @@
 const bcrypt = require('bcrypt');
 const bcrypt_salt = 10;
 
-// GET home page
+// GET home page categories
 exports.getHomePage = (req, res) => {
   // Récupération de tout les articles
   db.query(`SELECT * FROM categories`, (err, data) => {
@@ -12,6 +12,66 @@ exports.getHomePage = (req, res) => {
     return res.render("pages/home", { data });
   });
 };
+
+// PUT home page categories
+exports.putHomePage = (req, res) => {
+const { name_categories } = req.body;
+const { id } = req.params;
+console.log( "put categories", req.body )
+if ( name_categories) {
+  db.query(
+    `UPDATE categories SET name=${name_categories} WHERE Id_categories = ${id}`,
+    function (err, data) {
+      if (err) throw err;
+      //if (process.env.MODE === "test") res.json(data);
+      // Redirection vers la page Admin
+      else res.redirect("back");
+    }
+  );
+} else if (req.file) {
+  const {id} = req.params
+  console.log('id', id)
+  console.log('req.url', req.url);
+  db.query(
+    `SELECT picture from categories WHERE Id_categories=${id}`,
+    function (err, [data]) {
+      console.log("data", data);
+      if (data.picture !== "default.png") {
+        pathImg = path.resolve("public/img/" + data.picture);
+        fs.unlink(pathImg, (err) => {
+          if (err) throw err;
+          console.log(req.file);
+        });
+      }
+      db.query(
+        `UPDATE categories SET picture ="${req.file.completed}" WHERE Id_categories=${id}`,
+        function (err, data) {
+          if (err) throw err;
+          //if (process.env.MODE === "test") res.json(data);
+          // Redirection vers la page Admin
+          else res.redirect("back");
+          console.log("data", data);
+        }
+      );
+    }
+  );
+}
+};
+
+//DELETE categories
+exports.deleteCategories = (req, res) => {
+  const { id } = req.params;
+  db.query(
+    `DELETE FROM categories WHERE Id_categories=${id};`,
+    function (err, data) {
+      if (err) throw err;
+      //if (process.env.MODE === 'test') res.json(data)
+      // Redirection vers la page Admin
+      else res.redirect("back");
+    }
+  );
+};
+
 
 // GET contact page
 exports.getContact = (req, res) => {
@@ -113,7 +173,7 @@ exports.getProfil = (req, res) => {
 };
 
 //POST logout
-exports.postLogout = ('/logout', (req, res) => {
+exports.postLogout = ('/', (req, res) => {
   // On détruit la session
   req.session.destroy(() => {
     // On supprime le cookie
