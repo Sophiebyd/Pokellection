@@ -5,16 +5,15 @@ const upload = require("./config/other/multer");
 
 
 // import controller
-const {getHomePage, putHomePage, deleteCategories, getContact, postContactMail, getConnexion, postCreateAccount, getCreateAccount, getForgotPassword, getProfil, postLogout, get404, postConnexion} = require("./controller/home_controller");
+const {getHomePage, getContact, postContactMail, getConnexion, postCreateAccount, getCreateAccount, getForgotPassword, getProfil, postLogout, get404, postConnexion} = require("./controller/home_controller");
 const {getJeuxVideosPage, getCartesPage, getAnimesPage, getSeriesArticle, getFilmsArticle, getMangasArticle, getBoostersArticle, getDecksArticle, getJeuxVideosArticle, getMangas} = require("./controller/articles_controller");
-const {getAdmin, postAdmin, putAdmin, deleteAdmin} = require("./controller/admin_controller");
+const {getAdmin, postAdmin, putAdmin, deleteAdmin, putHomePage, postHomePage, deleteCategories,} = require("./controller/admin_controller");
 const { test } = require("./middleware");
 
 // Home page
 router.route("/")
 .get(test, getHomePage)
-.put(putHomePage)
-.delete(deleteCategories)
+
 // POST logout
 .post(postLogout);
 
@@ -96,11 +95,20 @@ router.route("/admin")
   // DELETE ARTICLE
   .delete(deleteAdmin);
 
-// admin with params url (id)
+// admin articles par ID
 router.route("/admin/:id")
 // UPDATE ARTICLE
 .put(upload.single("edit_image"), putAdmin)
 
+// CRUD categories par ID
+router.route("/admin/categories/:id")
+.put(upload.single("edit_image"), putHomePage)
+.delete(deleteCategories)
+
+
+// POST categories 
+router.route("/admin/categories")
+.post(upload.single("ajout_image"), postHomePage)
 
 // Exports de notre router
 module.exports = router;

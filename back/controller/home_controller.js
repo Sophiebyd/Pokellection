@@ -13,66 +13,6 @@ exports.getHomePage = (req, res) => {
   });
 };
 
-// PUT home page categories
-exports.putHomePage = (req, res) => {
-const { name_categories } = req.body;
-const { id } = req.params;
-console.log( "put categories", req.body )
-if ( name_categories) {
-  db.query(
-    `UPDATE categories SET name=${name_categories} WHERE Id_categories = ${id}`,
-    function (err, data) {
-      if (err) throw err;
-      //if (process.env.MODE === "test") res.json(data);
-      // Redirection vers la page Admin
-      else res.redirect("back");
-    }
-  );
-} else if (req.file) {
-  const {id} = req.params
-  console.log('id', id)
-  console.log('req.url', req.url);
-  db.query(
-    `SELECT picture from categories WHERE Id_categories=${id}`,
-    function (err, [data]) {
-      console.log("data", data);
-      if (data.picture !== "default.png") {
-        pathImg = path.resolve("public/img/" + data.picture);
-        fs.unlink(pathImg, (err) => {
-          if (err) throw err;
-          console.log(req.file);
-        });
-      }
-      db.query(
-        `UPDATE categories SET picture ="${req.file.completed}" WHERE Id_categories=${id}`,
-        function (err, data) {
-          if (err) throw err;
-          //if (process.env.MODE === "test") res.json(data);
-          // Redirection vers la page Admin
-          else res.redirect("back");
-          console.log("data", data);
-        }
-      );
-    }
-  );
-}
-};
-
-//DELETE categories
-exports.deleteCategories = (req, res) => {
-  const { id } = req.params;
-  db.query(
-    `DELETE FROM categories WHERE Id_categories=${id};`,
-    function (err, data) {
-      if (err) throw err;
-      //if (process.env.MODE === 'test') res.json(data)
-      // Redirection vers la page Admin
-      else res.redirect("back");
-    }
-  );
-};
-
-
 // GET contact page
 exports.getContact = (req, res) => {
   res.render("pages/contact");
@@ -124,7 +64,8 @@ exports.postConnexion =('/connexion', (req, res) => {
       else {
         // On assigne les data voulu dans la session
         req.session.user = {
-          pseudo: user.pseudo
+          pseudo: user.pseudo,
+          id: user.Id_users
         };
         res.redirect('/')
       }
@@ -173,16 +114,13 @@ exports.getProfil = (req, res) => {
 };
 
 //POST logout
-exports.postLogout = ('/', (req, res) => {
-  // On détruit la session
+exports.postLogout = function (req, res) {
+  console.log("Clear Cookie session :", req.session.user.id)
   req.session.destroy(() => {
-    // On supprime le cookie
-    res.clearCookie('poti-gato');
-    // Le petit log pour informé dans la console
-    console.log("Clear Cookie session :", req.sessionID);
-    res.redirect('/');
+      res.clearCookie('screenmaze-cookie')
+      res.redirect('/')
   })
-});
+}
 
 //GET 404
 exports.get404 = (req, res) => {

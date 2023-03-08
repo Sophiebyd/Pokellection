@@ -33,7 +33,7 @@ CREATE TABLE
       name VARCHAR(50) NOT NULL,
       created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
       edited_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-      picture VARCHAR(250) NOT NULL,
+      picture VARCHAR(250) NOT NULL DEFAULT 'default.jpg',
       PRIMARY KEY (Id_categories),
       UNIQUE (name)
    );
@@ -54,7 +54,7 @@ CREATE TABLE
       datefilms DATE,
       parution VARCHAR(250),
       sortieserie VARCHAR(250),
-      nbeps INT,
+      nbeps INT, 
       version VARCHAR(50),
       nb INT,
       collection VARCHAR(250),

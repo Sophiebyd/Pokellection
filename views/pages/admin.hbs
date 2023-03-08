@@ -60,14 +60,14 @@
             <div class="modal-body">
 
                 <!-- formulaire -->
-                <form>
+                <form action="/admin/categories" method="post" enctype="multipart/form-data">
                     <div class="row g-3">
                         <div>
-                            <input type="text" class="form-control" placeholder="Nom" aria-label="name" name="name">
+                            <input type="text" class="form-control" placeholder="Nom" aria-label="name" name="post_categories">
                         </div>
                         <div class="mb-3">
                             <label for="formFile" class="form-label"></label>
-                            <input class="form-control" type="file" id="form">
+                            <input class="form-control" type="file" id="form" name="ajout_image">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -75,11 +75,11 @@
                         <button type="button" class="btn btn-danger">Annuler</button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
 </div>
+
 
 <!-- third table -->
 <div class="container table-responsive-sm mt-2 col-7">
