@@ -24,7 +24,7 @@ exports.getAdmin = async (req, res) => {
   const deck = await db.query(
     "SELECT * FROM articles WHERE titledeck IS NOT NULL"
   );
-
+console.log("categorie", categorie);
   //if (process.env.MODE === "test") res.json({ boosters, decks });
   //else
   res.render("pages/admin", {
@@ -279,6 +279,7 @@ exports.putHomePage = (req, res) => {
 
 exports.deleteCategories = (req, res) => {
   const { id } = req.params;
+  console.log('req param delete', req.params);
   db.query(
     `DELETE FROM categories WHERE Id_categories=${id}`,
     function (err, data) {

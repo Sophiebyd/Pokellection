@@ -1,6 +1,7 @@
 //import des modules
 const bcrypt = require('bcrypt');
 const bcrypt_salt = 10;
+const { mailSend } = require("../utils/nodeMailer");
 
 // GET home page categories
 exports.getHomePage = (req, res) => {
@@ -21,7 +22,6 @@ exports.getContact = (req, res) => {
 // POST contact mail
 exports.postContactMail = (req, res) => {
   const { lastname, firstname, email, subject, message } = req.body;
-
   mailSend(
     `${lastname} ${firstname} <${email}>`,
     `email <${process.env.MAIL_USER}>`,

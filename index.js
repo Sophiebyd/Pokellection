@@ -8,7 +8,6 @@ const mysql = require("mysql");
 const methodOverride = require("method-override");
 const bodyParser = require("body-parser");
 require("dotenv").config();
-const { mailSend } = require("./back/utils/nodeMailer");
 const upload = require("./back/config/other/multer");
 const expressSession = require("express-session");
 const MySQLStore = require("express-mysql-session")(expressSession);

@@ -105,10 +105,10 @@ router.route("/admin/categories/:id")
 .put(upload.single("edit_image"), putHomePage)
 .delete(deleteCategories)
 
-
 // POST categories 
 router.route("/admin/categories")
 .post(upload.single("ajout_image"), postHomePage)
+
 
 // Exports de notre router
 module.exports = router;
