@@ -7,8 +7,10 @@ const upload = require("./config/other/multer");
 // import controller
 const {getHomePage, getContact, postContactMail, getConnexion, postCreateAccount, getCreateAccount, getForgotPassword, getProfil, postLogout, get404, postConnexion} = require("./controller/home_controller");
 const {getJeuxVideosPage, getCartesPage, getAnimesPage, getSeriesArticle, getFilmsArticle, getMangasArticle, getBoostersArticle, getDecksArticle, getJeuxVideosArticle, getMangas} = require("./controller/articles_controller");
-const {getAdmin, postAdmin, putAdmin, deleteAdmin, putHomePage, postHomePage, deleteCategories,} = require("./controller/admin_controller");
-const { test } = require("./middleware");
+const {getAdmin, postAdmin, putGames, deleteAdmin, putHomePage, postHomePage, deleteCategories,} = require("./controller/admin_controller");
+const { test, checkLayout } = require("./middleware");
+
+router.use(checkLayout)
 
 // Home page
 router.route("/")
@@ -88,17 +90,14 @@ router.route("/404")
 // page Admin
 router.route("/admin")
   .get(getAdmin)
-
   // POST article
   .post(postAdmin)
-  
-  // DELETE ARTICLE
-  .delete(deleteAdmin);
 
 // admin articles par ID
-router.route("/admin/:id")
-// UPDATE ARTICLE
-.put(upload.single("edit_image"), putAdmin)
+router.route("/admin/games/:id")
+.put(upload.single("edit_image"), putGames)
+// DELETE ARTICLE
+.delete(deleteAdmin);
 
 // CRUD categories par ID
 router.route("/admin/categories/:id")

@@ -65,7 +65,9 @@ exports.postConnexion =('/connexion', (req, res) => {
         // On assigne les data voulu dans la session
         req.session.user = {
           pseudo: user.pseudo,
-          id: user.Id_users
+          email: user.mail,
+          id: user.Id_users,
+          is_admin: user.isAdmin
         };
         res.redirect('/')
       }

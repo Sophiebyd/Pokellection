@@ -3,7 +3,7 @@
     <button class="btn btn-outline-primary " type="submit">Rechercher</button>
 </form>
 
-<!-- first table -->
+<!-- first table users -->
 <div class="container table-responsive-sm mt-2 col-5">
     <h1 class="text-center display-5">Table users</h1>
     <table class="table table-hover table-striped">
@@ -25,7 +25,7 @@
 </div>
 
 
-<!-- second table -->
+<!-- second table categories -->
 <div class="container table-responsive-sm mt-2 col-4">
     <h1 class="text-center display-5">Table categories</h1>
     <div class="d-flex justify-content-end">
@@ -49,7 +49,7 @@
     </table>
 </div>
 
-<!-- modal 2 -->
+<!-- modal categories -->
 <div class="modal" tabindex="-1" id="ajout_categories" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -59,7 +59,7 @@
             </div>
             <div class="modal-body">
 
-                <!-- formulaire -->
+                <!-- form categories -->
                 <form action="/admin/categories" method="post" enctype="multipart/form-data">
                     <div class="row g-3">
                         <div>
@@ -81,7 +81,7 @@
 </div>
 
 
-<!-- third table -->
+<!-- third table game-->
 <div class="container table-responsive-sm mt-2 col-7">
     <h1 class="text-center display-5">Table jeux</h1>
     <div class="d-flex justify-content-end">
@@ -106,7 +106,7 @@
     </table>
 </div>
 
-<!-- modal 3 -->
+<!-- modal game -->
 <div class="modal" tabindex="-1" id="ajout_jeux" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -116,23 +116,23 @@
             </div>
             <div class="modal-body">
 
-                <!-- formulaire -->
-                <form>
+                <!-- form game -->
+                <form action="/admin/jeuxvideos" method="post" enctype="multipart/form-data">
                     <div class="row g-3">
                         <div>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
-                                placeholder="Résumé"></textarea>
+                                placeholder="Résumé"  name="text"></textarea>
                         </div>
                         <div>
-                            <input type="text" class="form-control" placeholder="Titre" aria-label="title" name="title">
+                            <input type="text" class="form-control" placeholder="Titre" aria-label="title"  name="post_jeuxvideos">
                         </div>
                         <div>
                             <input type="date" class="form-control" placeholder="Date de sortie"
-                                aria-label="release date" name="release date">
+                                aria-label="release date"  name="post_jeuxvideos">
                         </div>
                         <div>
                             <input type="version" class="form-control" placeholder="Version" aria-label="version"
-                                name="eversion">
+                                name="post_jeuxvideos">
                         </div>
                         <div class="mb-3">
                             <label for="formFile" class="form-label">Image de couverture</label>
@@ -181,7 +181,7 @@
     </div>
 </div>
 
-<!-- fourth table -->
+<!-- fourth table mangas -->
 <div class="container table-responsive-sm mt-2 col-7">
     <h1 class="text-center display-5">Table mangas</h1>
     <div class="d-flex justify-content-end">
@@ -206,7 +206,7 @@
     </table>
 </div>
 
-<!-- modal 4 -->
+<!-- modal mangas -->
 <div class="modal" tabindex="-1" id="ajout_mangas" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -216,7 +216,7 @@
             </div>
             <div class="modal-body">
 
-                <!-- formulaire -->
+                <!-- form mangas -->
                 <form>
                     <div class="row g-3">
                         <div>
@@ -281,7 +281,7 @@
     </div>
 </div>
 
-<!-- fifth table -->
+<!-- fifth table series -->
 <div class="container table-responsive-sm mt-2 col-7">
     <h1 class="text-center display-5">Table séries</h1>
     <div class="d-flex justify-content-end">
@@ -306,7 +306,7 @@
     </table>
 </div>
 
-<!-- modal 5 -->
+<!-- modal series -->
 <div class="modal" tabindex="-1" id="ajout_series" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -316,7 +316,7 @@
             </div>
             <div class="modal-body">
 
-                <!-- formulaire -->
+                <!-- form series -->
                 <form>
                     <div class="row g-3">
                         <div>
@@ -381,7 +381,7 @@
     </div>
 </div>
 
-<!-- sixth table -->
+<!-- sixth table movies -->
 <div class="container table-responsive-sm mt-2 col-7">
     <h1 class="text-center display-5">Table films</h1>
     <div class="d-flex justify-content-end">
@@ -406,7 +406,7 @@
     </table>
 </div>
 
-<!-- modal 6 -->
+<!-- modal movies -->
 <div class="modal" tabindex="-1" id="ajout_films" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -415,7 +415,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- formulaire -->
+                <!-- form movies -->
                 <form>
                     <div class="row g-3">
                         <div>
@@ -476,7 +476,7 @@
     </div>
 </div>
 
-<!-- seventh table -->
+<!-- seventh table boosters-->
 <div class="container table-responsive-sm mt-2 col-5">
     <h1 class="text-center display-5">Table boosters</h1>
     <div class="d-flex justify-content-end">
@@ -501,7 +501,7 @@
     </table>
 </div>
 
-<!-- modal 7 -->
+<!-- modal boosters -->
 <div class="modal" tabindex="-1" id="ajout_boosters" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -511,7 +511,7 @@
             </div>
             <div class="modal-body">
 
-                <!-- formulaire -->
+                <!-- form boosters -->
                 <form>
                     <div class="row g-3">
                         <div>
@@ -573,7 +573,7 @@
     </div>
 </div>
 
-<!-- eight table -->
+<!-- eight table decks -->
 <div class="container table-responsive-sm mt-2 col-5">
     <h1 class="text-center display-5">Table decks</h1>
     <div class="d-flex justify-content-end">
@@ -598,7 +598,7 @@
     </table>
 </div>
 
-<!-- modal 8 -->
+<!-- modal decks -->
 <div class="modal" tabindex="-1" id="ajout_decks" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -608,7 +608,7 @@
             </div>
             <div class="modal-body">
 
-                <!-- formulaire -->
+                <!-- form decks -->
                 <form>
                     <div class="row g-3">
                         <div>

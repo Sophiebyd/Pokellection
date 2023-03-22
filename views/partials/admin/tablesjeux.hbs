@@ -5,13 +5,17 @@
   <th class="text-center">{{formatDate this.created_at "DD-MM-YYYY"}}</th>
   <th class="text-center">{{formatDate this.edited_at "DD-MM-YYYY"}}</th>
   <th class="text-center">
-    <a role="button" data-bs-toggle="modal" data-bs-target="#Modal_edit_jeux"><i class="bi bi-pencil-square"></i></a>
-    <a role="button" data-bs-toggle="modal" data-bs-target="#Modal_delete_jeux"><i class="bi bi-trash3"></i></a>
+    <a role="button" data-bs-toggle="modal" data-bs-target="#{{this.Id_articles}}Modal_edit_jeux"><i
+        class="bi bi-pencil-square"></i></a>
+        <a role="button" data-bs-toggle="modal" data-bs-target="#{{this.Id_articles}}Modal_picture_jeux"><i
+        class="bi bi-image"></i></a>
+    <a role="button" data-bs-toggle="modal" data-bs-target="#{{this.Id_articles}}Modal_delete_jeux"><i
+        class="bi bi-trash3"></i></a>
   </th>
 </tr>
 
 <!-- modal 1 -->
-<div class="modal" tabindex="-1" id="Modal_edit_jeux" aria-hidden="true">
+<div class="modal" tabindex="-1" id="{{this.Id_articles}}Modal_edit_jeux" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -21,52 +25,32 @@
       <div class="modal-body">
 
         <!-- formulaire -->
-        <form id="jeuxForm" action="/admin/{{this.Id_articles}}?_method=PUT" method="post" enctype="multipart/form-data">
+        <form id="jeuxForm" action="/admin/games/{{this.Id_articles}}?_method=PUT" method="post">
           <div class="row g-3">
             <div>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Résumé"></textarea>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" name="text"></textarea>
             </div>
             <div>
-              <input type="text" class="form-control" placeholder="Titre" aria-label="title" name="title">
+              <input type="text" class="form-control" placeholder="Titre"  name="titlejeux">
             </div>
             <div>
-              <input type="date" class="form-control" placeholder="Date de sortie" aria-label="release date"
-                name="release date">
+              <input type="date" class="form-control" placeholder="Date de sortie" 
+                name="datesorties">
             </div>
             <div>
-              <input type="version" class="form-control" placeholder="Version" aria-label="version" name="version">
-            </div>
-            <div class="mb-3">
-              <label for="formFile" class="form-label">Image de couverture</label>
-              <input class="form-control" type="file" id="formpicture" name="edit_image">
-            </div>
-            <div class="mb-3">
-              <label for="formFile" class="form-label">Image de caroussel 1</label>
-              <input class="form-control" type="file" id="form_caroussel_1">
-            </div>
-            <div class="mb-3">
-              <label for="formFile" class="form-label">Image de caroussel 2</label>
-              <input class="form-control" type="file" id="form_caroussel_2">
-            </div>
-            <div class="mb-3">
-              <label for="formFile" class="form-label">Image de caroussel 3</label>
-              <input class="form-control" type="file" id="form_caroussel_3">
-            </div>
-            <div class="mb-3">
-              <label for="formFile" class="form-label">Image de caroussel 4</label>
-              <input class="form-control" type="file" id="form_caroussel_4">
+              <input type="version" class="form-control" name="version" value="{{this.version}}">
             </div>
             <div>
-              <input type="text" class="form-control" placeholder="Lien 1" aria-label="link_1" name="link_1">
+              <input type="text" class="form-control" name="lien_1" value="{{this.lien_1}}">
             </div>
             <div>
-              <input type="text" class="form-control" placeholder="Lien 2" aria-label="link_2" name="link_2">
+              <input type="text" class="form-control" name="lien_2" value="{{this.lien_2}}">
             </div>
             <div>
-              <input type="text" class="form-control" placeholder="Lien 3" aria-label="link_3" name="link_3">
+              <input type="text" class="form-control" name="lien_3" value="{{this.lien_3}}">
             </div>
             <div>
-              <input type="text" class="form-control" placeholder="Lien 4" aria-label="link_4" name="link_4">
+              <input type="text" class="form-control" name="lien_4" value="{{this.lien_4}}">
             </div>
           </div>
           <div class="modal-footer">
@@ -80,7 +64,7 @@
 </div>
 
 <!-- modal 2 -->
-<div class="modal" tabindex="-1" id="Modal_delete_jeux" aria-hidden="true">
+<div class="modal" tabindex="-1" id="{{this.Id_articles}}Modal_delete_jeux" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -93,6 +77,31 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Supprimer</button>
         <button type="button" class="btn btn-danger">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal 3 -->
+<div class="modal" tabindex="-1" id="{{this.Id_articles}}Modal_picture_jeux" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modifier image</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/admin/games/{{this.Id_articles}}?_method=PUT" method="post"
+          enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="formFile" class="form-label">Image de couverture</label>
+            <input class="form-control" type="file" id="formpicture" name="edit_image">
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Modifier</button>
+            <button type="button" class="btn btn-danger">Annuler</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

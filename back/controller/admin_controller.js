@@ -24,7 +24,7 @@ exports.getAdmin = async (req, res) => {
   const deck = await db.query(
     "SELECT * FROM articles WHERE titledeck IS NOT NULL"
   );
-console.log("categorie", categorie);
+  console.log("categorie", categorie);
   //if (process.env.MODE === "test") res.json({ boosters, decks });
   //else
   res.render("pages/admin", {
@@ -46,28 +46,15 @@ exports.postAdmin = (req, res) => {
   const {
     text,
     titlejeux,
-    titlemangas,
-    titleseries,
-    titlefilms,
-    titlebooster,
-    titledeck,
     datesorties,
-    datefilms,
-    parution,
-    sortieserie,
-    nbeps,
     version,
-    nb,
-    collection,
-    picture,
-    caroussel,
     lien_1,
     lien_2,
     lien_3,
     lien_4,
   } = req.body;
   db.query(
-    `INSERT INTO articles (Id_articles, text, titlejeux, titleseries, titlefilms, id_user,type) VALUES ('${text}','${titlejeux}', '${titlemangas}', '${titleseries}','${titlefilms}','${titlebooster}', '${titledeck}', '${datesorties}', '${datefilms}', '${parution}', '${sortieserie}', '${nbeps}', '${version}', '${collection}', '${nb}', '${picture}', '${caroussel}', '${lien_1}','${lien_2}', '${lien_3}', '${lien_4}');`,
+    `INSERT INTO articles (Id_articles, text, titlejeux, titleseries, titlefilms, Id_user,type) VALUES ('${text}','${titlejeux}', '${titlemangas}', '${titleseries}','${titlefilms}','${titlebooster}', '${titledeck}', '${datesorties}', '${datefilms}', '${parution}', '${sortieserie}', '${nbeps}', '${version}', '${collection}', '${nb}', '${picture}', '${caroussel}', '${lien_1}','${lien_2}', '${lien_3}', '${lien_4}');`,
     function (err, data) {
       if (err) throw err;
       //if (process.env.MODE === 'test') return res.json(data)
@@ -77,24 +64,13 @@ exports.postAdmin = (req, res) => {
   );
 };
 
-//PUT admin (update)
-exports.putAdmin = (req, res) => {
+//PUT games (update)
+exports.putGames = (req, res) => {
   const {
     text,
     titlejeux,
-    titlemangas,
-    titleseries,
-    titlefilms,
-    titlebooster,
-    titledeck,
     datesorties,
-    datefilms,
-    parution,
-    sortieserie,
-    nbeps,
     version,
-    nb,
-    collection,
     lien_1,
     lien_2,
     lien_3,
@@ -102,46 +78,17 @@ exports.putAdmin = (req, res) => {
   } = req.body;
   const { id } = req.params;
   console.log("putAdmin", req.body);
-  if (
-    (text,
-    titlejeux,
-    titlemangas,
-    titleseries,
-    titlefilms,
-    titlebooster,
-    titledeck,
-    datesorties,
-    datefilms,
-    parution,
-    sortieserie,
-    nbeps,
-    version,
-    nb,
-    lien_1,
-    lien_2,
-    lien_3,
-    lien_4)
-  ) {
+  if ((text, titlejeux, datesorties, version, lien_1, lien_2, lien_3, lien_4)) {
     db.query(
-      `UPDATE articles SET text='${text}', 
-        titlejeux='${titlejeux}', 
-        titlemangas='${titlemangas}', 
-        titleseries='${titleseries}', 
-        titlefilms='${titlefilms}', 
-        titlebooster='${titlebooster}', 
-        titledeck='${titledeck}', 
-        datesorties= ${datesorties}, 
-        datefilms = ${datefilms},  
-        parution ='${parution}', 
-        sortieserie ='${sortieserie}', 
-        nbeps = ${nbeps}, 
-        version ='${version}', 
-        nb = ${nb}, collection = '${collection}', 
-        lien_1 = '${lien_1}', 
-        lien_3 = '${lien_3}', 
-        lien_2 = '${lien_2}', 
-        lien_4 = '${lien_4}',
-        WHERE Id_article = ${id}`,
+      `UPDATE articles SET text = '${text}', 
+      titlejeux = '${titlejeux}', 
+      datesorties = '${datesorties}', 
+      version = '${version}', 
+      lien_1 = '${lien_1}', 
+      lien_2 = '${lien_2}', 
+      lien_3 = '${lien_3}', 
+      lien_4 = '${lien_4}'
+        WHERE Id_articles = ${id}`,
       function (err, data) {
         if (err) throw err;
         //if (process.env.MODE === "test") res.json(data);
@@ -279,7 +226,7 @@ exports.putHomePage = (req, res) => {
 
 exports.deleteCategories = (req, res) => {
   const { id } = req.params;
-  console.log('req param delete', req.params);
+  console.log("req param delete", req.params);
   db.query(
     `DELETE FROM categories WHERE Id_categories=${id}`,
     function (err, data) {
