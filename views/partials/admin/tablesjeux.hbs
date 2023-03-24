@@ -14,7 +14,7 @@
   </th>
 </tr>
 
-<!-- modal 1 -->
+<!-- modal edit -->
 <div class="modal" tabindex="-1" id="{{this.Id_articles}}Modal_edit_jeux" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -28,13 +28,13 @@
         <form id="jeuxForm" action="/admin/games/{{this.Id_articles}}?_method=PUT" method="post">
           <div class="row g-3">
             <div>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" name="text"></textarea>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" name="text" value="{{this.text}}"></textarea>
             </div>
             <div>
-              <input type="text" class="form-control" placeholder="Titre"  name="titlejeux">
+              <input type="text" class="form-control" name="titlejeux" value="{{this.titlejeux}}">
             </div>
             <div>
-              <input type="date" class="form-control" placeholder="Date de sortie" 
+              <input type="date" class="form-control" value="{{this.datesorties}}"
                 name="datesorties">
             </div>
             <div>
@@ -63,26 +63,7 @@
   </div>
 </div>
 
-<!-- modal 2 -->
-<div class="modal" tabindex="-1" id="{{this.Id_articles}}Modal_delete_jeux" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Supprimer</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Souhaitez-vous supprimer l'article de ce jeu ?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Supprimer</button>
-        <button type="button" class="btn btn-danger">Annuler</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- modal 3 -->
+<!-- modal picture -->
 <div class="modal" tabindex="-1" id="{{this.Id_articles}}Modal_picture_jeux" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -102,6 +83,27 @@
             <button type="button" class="btn btn-danger">Annuler</button>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal delete -->
+<div class="modal" tabindex="-1" id="{{this.Id_articles}}Modal_delete_jeux" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Supprimer</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="modal-body" action="/admin/{{this.Id_articles}}?_method=DELETE" method="post">
+        <p>Souhaitez-vous supprimer le jeu ?</p>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Supprimer</button>
+          <button type="button" class="btn btn-danger">Annuler</button>
+        </div>
+      </form>
       </div>
     </div>
   </div>

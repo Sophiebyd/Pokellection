@@ -63,7 +63,8 @@
                 <form action="/admin/categories" method="post" enctype="multipart/form-data">
                     <div class="row g-3">
                         <div>
-                            <input type="text" class="form-control" placeholder="Nom" aria-label="name" name="post_categories">
+                            <input type="text" class="form-control" placeholder="Nom" aria-label="name"
+                                name="post_categories">
                         </div>
                         <div class="mb-3">
                             <label for="formFile" class="form-label"></label>
@@ -117,65 +118,50 @@
             <div class="modal-body">
 
                 <!-- form game -->
-                <form action="/admin/jeuxvideos" method="post" enctype="multipart/form-data">
+                <form action="/admin/games" method="post" enctype="multipart/form-data">
                     <div class="row g-3">
                         <div>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
-                                placeholder="Résumé"  name="text"></textarea>
+                                placeholder="Résumé" name="text"></textarea>
                         </div>
                         <div>
-                            <input type="text" class="form-control" placeholder="Titre" aria-label="title"  name="post_jeuxvideos">
+                            <input type="text" class="form-control" placeholder="Titre" aria-label="title"
+                                name="titlejeux">
                         </div>
                         <div>
                             <input type="date" class="form-control" placeholder="Date de sortie"
-                                aria-label="release date"  name="post_jeuxvideos">
+                                aria-label="release date" name="datesorties">
                         </div>
                         <div>
                             <input type="version" class="form-control" placeholder="Version" aria-label="version"
-                                name="post_jeuxvideos">
+                                name="version">
                         </div>
                         <div class="mb-3">
                             <label for="formFile" class="form-label">Image de couverture</label>
-                            <input class="form-control" type="file" id="formpicture">
-                        </div>
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">Image de caroussel 1</label>
-                            <input class="form-control" type="file" id="form_caroussel_1">
-                        </div>
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">Image de caroussel 2</label>
-                            <input class="form-control" type="file" id="form_caroussel_2">
-                        </div>
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">Image de caroussel 3</label>
-                            <input class="form-control" type="file" id="form_caroussel_3">
-                        </div>
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">Image de caroussel 4</label>
-                            <input class="form-control" type="file" id="form_caroussel_4">
+                            <input class="form-control" type="file" id="ajout_image">
                         </div>
                         <div>
                             <input type="text" class="form-control" placeholder="Lien 1" aria-label="link_1"
-                                name="link_1">
+                                name="lien_1">
                         </div>
                         <div>
                             <input type="text" class="form-control" placeholder="Lien 2" aria-label="link_2"
-                                name="link_2">
+                                name="lien_2">
                         </div>
                         <div>
                             <input type="text" class="form-control" placeholder="Lien 3" aria-label="link_3"
-                                name="link_3">
+                                name="lien_3">
                         </div>
                         <div>
                             <input type="text" class="form-control" placeholder="Lien 4" aria-label="link_4"
-                                name="link_4">
+                                name="lien_4">
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Ajouter</button>
+                        <button type="button" class="btn btn-danger">Annuler</button>
+                    </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ajouter</button>
-                <button type="button" class="btn btn-danger">Annuler</button>
             </div>
         </div>
     </div>

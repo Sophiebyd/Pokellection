@@ -1,13 +1,14 @@
 const express = require("express"),
-  router = express.Router();
-
+router = express.Router();
 const upload = require("./config/other/multer");
 
 
 // import controller
 const {getHomePage, getContact, postContactMail, getConnexion, postCreateAccount, getCreateAccount, getForgotPassword, getProfil, postLogout, get404, postConnexion} = require("./controller/home_controller");
 const {getJeuxVideosPage, getCartesPage, getAnimesPage, getSeriesArticle, getFilmsArticle, getMangasArticle, getBoostersArticle, getDecksArticle, getJeuxVideosArticle, getMangas} = require("./controller/articles_controller");
-const {getAdmin, postAdmin, putGames, deleteAdmin, putHomePage, postHomePage, deleteCategories,} = require("./controller/admin_controller");
+const {getAdmin, deleteArticles} = require("./controller/admin_controller");
+const {postHomePage, putHomePage, deleteCategories} = require("./controller/categories_controller");
+const {putGames, postGames} = require("./controller/games_controller");
 const { test, checkLayout } = require("./middleware");
 
 router.use(checkLayout)
@@ -90,14 +91,17 @@ router.route("/404")
 // page Admin
 router.route("/admin")
   .get(getAdmin)
-  // POST article
-  .post(postAdmin)
 
-// admin articles par ID
+router.route("/admin/:id")
+  .delete(deleteArticles)
+
+// CRUD Admin games par ID
 router.route("/admin/games/:id")
 .put(upload.single("edit_image"), putGames)
-// DELETE ARTICLE
-.delete(deleteAdmin);
+
+// POST Admin games 
+router.route("/admin/games")
+.post(upload.single("ajout_image"), postGames)
 
 // CRUD categories par ID
 router.route("/admin/categories/:id")
