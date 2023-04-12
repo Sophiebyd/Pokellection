@@ -75,6 +75,20 @@ exports.getMangasArticle = (req, res) => {
       return res.render("pages/id_mangas", { data: data[0] });
     });
   };
+  
+// GET Mangas article 
+exports.getMangas = (req, res) => {
+  // Récupération de tout les articles
+  db.query(
+    `SELECT * FROM articles WHERE titlemangas IS NOT NULL`,
+    (err, data) => {
+      //if (process.env.MODE === "test") res.json(obj);
+      if (err) throw err;
+      console.log("data", data);
+      return res.render("pages/mangas", { data });
+    }
+  );
+};
 
 // GET Boosters article par ID
 exports.getBoostersArticle = (req, res) => {
@@ -112,16 +126,3 @@ exports.getJeuxVideosArticle = (req, res) => {
     });
   };
 
-// GET Mangas article 
-exports.getMangas = (req, res) => {
-    // Récupération de tout les articles
-    db.query(
-      `SELECT * FROM articles WHERE titlemangas IS NOT NULL`,
-      (err, data) => {
-        //if (process.env.MODE === "test") res.json(obj);
-        if (err) throw err;
-        console.log("data", data);
-        return res.render("pages/mangas", { data });
-      }
-    );
-  };

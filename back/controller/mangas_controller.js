@@ -3,24 +3,17 @@ const path = require("path");
 const fs = require("fs");
 
 // POST Games
-exports.postGames = (req, res) => {
-  const {
-    text,
-    titlejeux,
-    datesorties,
-    version,
-    lien_1,
-    lien_2,
-    lien_3,
-    lien_4,
-  } = req.body;
+exports.postMangas = (req, res) => {
+  const { text, titlemangas, parution, nb, lien_1, lien_2, lien_3, lien_4 } = req.body;
   console.log("post games req.body", req.body);
-  let picture = "default.jpg"; // Initialisez la variable "picture" à "default.jpg" par défaut
   if (req.file) {
-    picture = req.file.completed; // Affectez la valeur du nom de fichier téléchargé à la variable "picture"
+    let picture;
+    picture = req.file.filename;
+  } else {
+    picture = "default.jpg";
   }
   db.query(
-    `INSERT INTO articles (text, titlejeux, datesorties, version, picture, lien_1, lien_2, lien_3, lien_4, Id_users, Id_categories) VALUES ("${text}","${titlejeux}", "${datesorties}","${version}", "${picture}", "${lien_1}","${lien_2}","${lien_3}","${lien_4}", ${req.session.user.id}, 1)`,
+    `INSERT INTO articles (text, titlemangas, parution, nb, picture, lien_1, lien_2, lien_3, lien_4, Id_users, Id_categories) VALUES ("${text}","${titlemangas}", "${parution}", ${nb}, "${req.file.filename}", "${lien_1}","${lien_2}","${lien_3}","${lien_4}", "${req.session.user.id}", 2)`,
     function (err, data) {
       if (err) {
         throw err;
@@ -31,31 +24,23 @@ exports.postGames = (req, res) => {
   );
 };
 
-//PUT games (update)
-exports.putGames = (req, res) => {
-  const {
-    text,
-    titlejeux,
-    datesorties,
-    version,
-    lien_1,
-    lien_2,
-    lien_3,
-    lien_4,
-  } = req.body;
+//PUT Mangas
+exports.putMangas = (req, res) => {
+  const { text, titlemangas, parution, nb, lien_1, lien_2, lien_3, lien_4 } =
+    req.body;
   const { id } = req.params;
-  console.log("putAdmin", req.body);
-  if (text, titlejeux, datesorties, version, lien_1, lien_2, lien_3, lien_4) {
+  console.log("putAdminMangas", req.body);
+  if ((text, titlemangas, parution, nb, lien_1, lien_2, lien_3, lien_4)) {
     db.query(
       `UPDATE articles SET text = '${text}', 
-        titlejeux = '${titlejeux}', 
-        datesorties = '${datesorties}', 
-        version = '${version}', 
-        lien_1 = '${lien_1}', 
-        lien_2 = '${lien_2}', 
-        lien_3 = '${lien_3}', 
-        lien_4 = '${lien_4}'
-          WHERE Id_articles = ${id}`,
+          titlemangas = '${titlemangas}', 
+          parution = '${parution}', 
+          nb = '${nb}', 
+          lien_1 = '${lien_1}', 
+          lien_2 = '${lien_2}', 
+          lien_3 = '${lien_3}', 
+          lien_4 = '${lien_4}'
+            WHERE Id_articles = ${id}`,
       function (err, data) {
         if (err) throw err;
         //if (process.env.MODE === "test") res.json(data);

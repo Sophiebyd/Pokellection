@@ -7,10 +7,10 @@ exports.postHomePage = (req, res) => {
   const { post_categories } = req.body;
   console.log("post categories req.body", req.body);
   if (req.file) {
-    let image;
-    image = req.file.filename;
+    let picture;
+    picture = req.file.filename;
   } else {
-    image = "default.jpg";
+    picture = "default.jpg";
   }
   db.query(
     `INSERT INTO categories (name, picture) VALUES ("${post_categories}", "${req.file.filename}")`,

@@ -5,17 +5,17 @@
   <th class="text-center">{{formatDate this.created_at "DD-MM-YYYY"}}</th>
   <th class="text-center">{{formatDate this.edited_at "DD-MM-YYYY"}}</th>
   <th class="text-center">
-    <a role="button" data-bs-toggle="modal" data-bs-target="#{{this.Id_articles}}Modal_edit_jeux"><i
+    <a role="button" data-bs-toggle="modal" data-bs-target="#{{this.Id_articles}}modal_edit_jeux"><i
         class="bi bi-pencil-square"></i></a>
-        <a role="button" data-bs-toggle="modal" data-bs-target="#{{this.Id_articles}}Modal_picture_jeux"><i
+    <a role="button" data-bs-toggle="modal" data-bs-target="#{{this.Id_articles}}modal_picture_jeux"><i
         class="bi bi-image"></i></a>
-    <a role="button" data-bs-toggle="modal" data-bs-target="#{{this.Id_articles}}Modal_delete_jeux"><i
+    <a role="button" data-bs-toggle="modal" data-bs-target="#{{this.Id_articles}}modal_delete"><i
         class="bi bi-trash3"></i></a>
   </th>
 </tr>
 
 <!-- modal edit -->
-<div class="modal" tabindex="-1" id="{{this.Id_articles}}Modal_edit_jeux" aria-hidden="true">
+<div class="modal" tabindex="-1" id="{{this.Id_articles}}modal_edit_jeux" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -25,10 +25,10 @@
       <div class="modal-body">
 
         <!-- formulaire -->
-        <form id="jeuxForm" action="/admin/games/{{this.Id_articles}}?_method=PUT" method="post">
+        <form action="/admin/games/{{this.Id_articles}}?_method=PUT" method="post">
           <div class="row g-3">
             <div>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" name="text" value="{{this.text}}"></textarea>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" name="text">{{this.text}}</textarea>
             </div>
             <div>
               <input type="text" class="form-control" name="titlejeux" value="{{this.titlejeux}}">
@@ -64,7 +64,7 @@
 </div>
 
 <!-- modal picture -->
-<div class="modal" tabindex="-1" id="{{this.Id_articles}}Modal_picture_jeux" aria-hidden="true">
+<div class="modal" tabindex="-1" id="{{this.Id_articles}}modal_picture_jeux" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -89,7 +89,7 @@
 </div>
 
 <!-- modal delete -->
-<div class="modal" tabindex="-1" id="{{this.Id_articles}}Modal_delete_jeux" aria-hidden="true">
+<div class="modal" tabindex="-1" id="{{this.Id_articles}}modal_delete" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -97,7 +97,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="modal-body" action="/admin/{{this.Id_articles}}?_method=DELETE" method="post">
+        <form action="/admin/{{this.Id_articles}}?_method=DELETE" method="post">
         <p>Souhaitez-vous supprimer le jeu ?</p>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Supprimer</button>

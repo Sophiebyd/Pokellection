@@ -86,7 +86,7 @@
 <div class="container table-responsive-sm mt-2 col-7">
     <h1 class="text-center display-5">Table jeux</h1>
     <div class="d-flex justify-content-end">
-        <a role="button" data-bs-toggle="modal" data-bs-target="#ajout_jeux" class="me-4 mb-3"><i
+        <a role="button" data-bs-toggle="modal" data-bs-target="#add_games" class="me-4 mb-3"><i
                 class="bi bi-plus-square"></i></a>
     </div>
     <table class="table table-hover table-striped">
@@ -108,7 +108,7 @@
 </div>
 
 <!-- modal game -->
-<div class="modal" tabindex="-1" id="ajout_jeux" aria-hidden="true">
+<div class="modal" tabindex="-1" id="add_games" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -121,7 +121,7 @@
                 <form action="/admin/games" method="post" enctype="multipart/form-data">
                     <div class="row g-3">
                         <div>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
+                            <textarea class="form-control" rows="2"
                                 placeholder="Résumé" name="text"></textarea>
                         </div>
                         <div>
@@ -138,23 +138,19 @@
                         </div>
                         <div class="mb-3">
                             <label for="formFile" class="form-label">Image de couverture</label>
-                            <input class="form-control" type="file" id="ajout_image">
+                            <input class="form-control" type="file" name="ajout_image">
                         </div>
                         <div>
-                            <input type="text" class="form-control" placeholder="Lien 1" aria-label="link_1"
-                                name="lien_1">
+                            <input type="text" class="form-control" value="NULL" name="lien_1">
                         </div>
                         <div>
-                            <input type="text" class="form-control" placeholder="Lien 2" aria-label="link_2"
-                                name="lien_2">
+                            <input type="text" class="form-control" value="NULL" name="lien_2">
                         </div>
                         <div>
-                            <input type="text" class="form-control" placeholder="Lien 3" aria-label="link_3"
-                                name="lien_3">
+                            <input type="text" class="form-control" value="NULL" name="lien_3">
                         </div>
                         <div>
-                            <input type="text" class="form-control" placeholder="Lien 4" aria-label="link_4"
-                                name="lien_4">
+                            <input type="text" class="form-control" value="NULL" name="lien_4">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -171,7 +167,7 @@
 <div class="container table-responsive-sm mt-2 col-7">
     <h1 class="text-center display-5">Table mangas</h1>
     <div class="d-flex justify-content-end">
-        <a role="button" data-bs-toggle="modal" data-bs-target="#ajout_mangas" class="me-4 mb-3"><i
+        <a role="button" data-bs-toggle="modal" data-bs-target="#add_mangas" class="me-4 mb-3"><i
                 class="bi bi-plus-square"></i></a>
     </div>
     <table class="table table-hover table-striped">
@@ -193,7 +189,7 @@
 </div>
 
 <!-- modal mangas -->
-<div class="modal" tabindex="-1" id="ajout_mangas" aria-hidden="true">
+<div class="modal" tabindex="-1" id="add_mangas" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -203,65 +199,42 @@
             <div class="modal-body">
 
                 <!-- form mangas -->
-                <form>
+                <form action="/admin/mangas" method="post" enctype="multipart/form-data">
                     <div class="row g-3">
                         <div>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
-                                placeholder="Résumé"></textarea>
+                            <textarea class="form-control" rows="2" placeholder="Résumé" name="text"></textarea>
                         </div>
                         <div>
-                            <input type="text" class="form-control" placeholder="Titre" aria-label="title" name="title">
+                            <input type="text" class="form-control" placeholder="Titre"name="titlemangas">
                         </div>
                         <div>
-                            <input type="date" class="form-control" placeholder="Parution" aria-label="release date"
-                                name="release date">
+                            <input type="date" class="form-control" placeholder="Parution" name="parution">
                         </div>
                         <div>
-                            <input type="number" class="form-control" name="number" placeholder="Nombre de tomes">
+                            <input type="number" class="form-control" name="nb" placeholder="Nombre de tomes">
                         </div>
                         <div class="mb-3">
                             <label for="formFile" class="form-label">Image de couverture</label>
-                            <input class="form-control" type="file" id="formpicture">
-                        </div>
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">Image de caroussel 1</label>
-                            <input class="form-control" type="file" id="form_caroussel_1">
-                        </div>
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">Image de caroussel 2</label>
-                            <input class="form-control" type="file" id="form_caroussel_2">
-                        </div>
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">Image de caroussel 3</label>
-                            <input class="form-control" type="file" id="form_caroussel_3">
-                        </div>
-                        <div class="mb-3">
-                            <label for="formFile" class="form-label">Image de caroussel 4</label>
-                            <input class="form-control" type="file" id="form_caroussel_4">
+                            <input class="form-control" type="file" name="ajout_image">
                         </div>
                         <div>
-                            <input type="text" class="form-control" placeholder="Lien 1" aria-label="link_1"
-                                name="link_1">
+                            <input type="text" class="form-control" placeholder="Lien 1" name="lien_1">
                         </div>
                         <div>
-                            <input type="text" class="form-control" placeholder="Lien 2" aria-label="link_2"
-                                name="link_2">
+                            <input type="text" class="form-control" placeholder="Lien 2" name="lien_2">
                         </div>
                         <div>
-                            <input type="text" class="form-control" placeholder="Lien 3" aria-label="link_3"
-                                name="link_3">
+                            <input type="text" class="form-control" placeholder="Lien 3" name="lien_3">
                         </div>
                         <div>
-                            <input type="text" class="form-control" placeholder="Lien 4" aria-label="link_4"
-                                name="link_4">
+                            <input type="text" class="form-control" placeholder="Lien 4" name="lien_4">
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Ajouter</button>
+                        <button type="button" class="btn btn-danger">Annuler</button>
+                    </div>
                 </form>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ajouter</button>
-                <button type="button" class="btn btn-danger">Annuler</button>
             </div>
         </div>
     </div>

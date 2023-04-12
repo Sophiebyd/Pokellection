@@ -9,6 +9,8 @@ const {getJeuxVideosPage, getCartesPage, getAnimesPage, getSeriesArticle, getFil
 const {getAdmin, deleteArticles} = require("./controller/admin_controller");
 const {postHomePage, putHomePage, deleteCategories} = require("./controller/categories_controller");
 const {putGames, postGames} = require("./controller/games_controller");
+const {putMangas, postMangas} = require("./controller/mangas_controller");
+
 const { test, checkLayout } = require("./middleware");
 
 router.use(checkLayout)
@@ -103,15 +105,22 @@ router.route("/admin/games/:id")
 router.route("/admin/games")
 .post(upload.single("ajout_image"), postGames)
 
-// CRUD categories par ID
+// CRUD Categories par ID
 router.route("/admin/categories/:id")
 .put(upload.single("edit_image"), putHomePage)
 .delete(deleteCategories)
 
-// POST categories 
+// POST Categories 
 router.route("/admin/categories")
 .post(upload.single("ajout_image"), postHomePage)
 
+// CRUD Admin mangas par ID
+router.route("/admin/mangas/:id")
+.put(upload.single("edit_image"), putMangas)
+
+// CRUD Admin mangas
+router.route("/admin/mangas")
+.post(upload.single("ajout_image"), postMangas)
 
 // Exports de notre router
 module.exports = router;
