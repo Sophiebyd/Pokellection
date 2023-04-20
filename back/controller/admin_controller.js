@@ -40,7 +40,7 @@ exports.getAdmin = async (req, res) => {
   });
 };
 
-// Delete games
+// Delete 
 exports.deleteArticles = (req, res) => {
   const { id } = req.params;
   console.log("req param delete", req.params);

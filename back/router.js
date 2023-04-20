@@ -18,7 +18,6 @@ router.use(checkLayout)
 // Home page
 router.route("/")
 .get(test, getHomePage)
-
 // POST logout
 .post(postLogout);
 
